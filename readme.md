@@ -28,6 +28,7 @@ See the EQUELLA REST API guide for instructions on generating an OAUTH token. It
 Helpful things. URLs open in your default browser.
 
 `eq docs`, `eq apidocs` — open the API documentation URL
+
 `eq admin`, `eq console` — opens the download URL for the EQUELLA admin console Java app
 
 ### Raw URL Mode
@@ -40,23 +41,25 @@ If you don't use one of the shortcuts for the various API endpoints, `eq` defaul
 > eq --method delete 'taxonomy/1234-asdasd-1234/term/1231231-1231231' # delete a term
 ```
 
-You can combine the endpoint shortcuts below with raw URL requests by using the `--path` flag, which appends its argument onto the specified endpoint. For instance:
+You can combine the endpoint shortcuts below with raw URL requests by appending the rest of the URL onto a shortcut. For instance:
 
 ```sh
 > # list all taxonomy terms using both a shortcut & a specific path
-> eq tax --path '1234-4321-asda-asda-1231/term'
+> eq tax '1234-4321-asda-asda-1231/term'
 ```
+
+The `--path` flag is also available for specifying a path after an endpoint.
 
 ### Endpoints
 
-A series of specific endpoints are available.
+A series of configured endpoint shortcuts are available. A common feature of these shortcuts is that they allow you to retrieve an object by its _name_ (case sensitive, usually) rather than its UUID.
 
 #### Collections
 
 Shortcuts: coll, collection, collections
 
 ```sh
-> # look up user by name
+> # look up collection by name
 > eq coll --name 'Syllabus Collection' # -q also works
 ```
 
