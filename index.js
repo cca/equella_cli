@@ -17,7 +17,7 @@ var eq = function (options) {
         case 'collection/':
             require(path.join(process.cwd(), 'endpoints', 'collection'))(options)
             break
-        case 'taxonomy':
+        case 'taxonomy/':
             require(path.join(process.cwd(), 'endpoints', 'taxonomy'))(options)
             break
         case 'usermanagement/local/group/':
