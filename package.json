@@ -1,0 +1,20 @@
+{
+  "name": "equella_rest_apis",
+  "version": "1.0.0",
+  "description": "access EQUELLA functions with its REST API",
+  "main": "index.js",
+  "bin": {
+    "eq": "cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "phette23 <phette23@gmail.com> (http://phette.net)",
+  "license": "Apache v. 2",
+  "dependencies": {
+    "opn": "^1.0.1",
+    "rc": "^1.0.0",
+    "request": "^2.54.0"
+  },
+  "devDependencies": {}
+}
