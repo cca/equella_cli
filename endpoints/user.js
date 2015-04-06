@@ -5,7 +5,8 @@ var handle = require(path.join(process.cwd(), 'lib', 'handle-error'))
 module.exports = function (options) {
     var query = options.name || options.q
 
-    // @todo should this be another findByName call?
+    // @todo can't use findByName b/c user objects have "username" property & not "name"
+    // could refactor findByName to be flexible in this circumstance
     if (query) {
         options.path = '?q=' + query
         return req(options, function (err, resp, data) {
