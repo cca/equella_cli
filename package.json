@@ -1,14 +1,14 @@
 {
   "name": "equella-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "access EQUELLA functions with its REST API",
   "main": "index.js",
   "bin": {
     "eq": "cli.js"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/cca/equella_cli"
+    "type": "git",
+    "url": "https://github.com/cca/equella_cli"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
