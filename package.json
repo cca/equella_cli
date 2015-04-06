@@ -6,6 +6,10 @@
   "bin": {
     "eq": "cli.js"
   },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/cca/equella_cli"
+  }
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
