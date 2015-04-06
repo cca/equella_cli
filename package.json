@@ -1,5 +1,5 @@
 {
-  "name": "equella_rest_apis",
+  "name": "equella-cli",
   "version": "1.0.0",
   "description": "access EQUELLA functions with its REST API",
   "main": "index.js",
