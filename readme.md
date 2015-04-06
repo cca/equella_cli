@@ -52,7 +52,7 @@ The `--path` flag is also available for specifying a path after an endpoint.
 
 ### Endpoints
 
-A series of configured endpoint shortcuts are available. A common feature of these shortcuts is that they allow you to retrieve an object by its _name_ (case sensitive, usually) rather than its UUID.
+A series of configured endpoint shortcuts are available. A common feature of these shortcuts is that they allow you to retrieve an object by its _name_ (case insensitive, usually) rather than its UUID.
 
 #### Collections
 
@@ -79,7 +79,7 @@ Shortcuts: group, groups
 Shortcuts: role, roles
 
 ```sh
-> # look up role by name
+> # look up role by (case sensitive) name
 > eq role --name 'Student Contributor Role'
 ```
 
@@ -88,7 +88,7 @@ Shortcuts: role, roles
 Shortcuts: tax, taxo, taxonomy
 
 ```sh
-> # look up taxonomy by case-insensitive name instead of UUID
+> # look up taxonomy by name instead of UUID
 > eq tax --name 'Semesters'
 ```
 
@@ -97,7 +97,7 @@ Shortcuts: tax, taxo, taxonomy
 Shortcuts: user, users
 
 ```sh
-> # look up user by name
+> # look up user by (case sensitive) name
 > eq user --name 'xsun1' # -q also works
 ```
 
