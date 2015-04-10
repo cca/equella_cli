@@ -6,6 +6,7 @@ var defaults = {
     raw: true
 }
 var options = require('rc')('equella', defaults)
+require('./lib/validate-options')(options)
 
 // API documentation
 if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0] === 'docs') {
