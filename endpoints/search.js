@@ -1,4 +1,3 @@
-var path = require('path')
-var req = require(path.join(process.cwd(), 'lib', 'req'))
+var req = require('../lib/req')
 // @todo implement search endpoint, see:
 // apidocs.do#!/search

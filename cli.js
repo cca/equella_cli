@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 var open = require('opn')
-var path = require('path')
-var req = require(path.join(process.cwd(), 'lib', 'req'))
+var req = require('./lib/req')
 var defaults = {
     method: 'get',
     raw: true

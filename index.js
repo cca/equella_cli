@@ -1,6 +1,5 @@
-var path = require('path')
-var req = require(path.join(process.cwd(), 'lib', 'req'))
-var endpoints = require(path.join(process.cwd(), 'endpoints', 'hash'))
+var req = require('./lib/req')
+var endpoints = require('./endpoints/hash')
 
 // main exported module
 var eq = function (options) {
@@ -15,19 +14,19 @@ var eq = function (options) {
 
     switch (options.endpoint) {
         case 'collection/':
-            require(path.join(process.cwd(), 'endpoints', 'collection'))(options)
+            require('./endpoints/collection')(options)
             break
         case 'taxonomy/':
-            require(path.join(process.cwd(), 'endpoints', 'taxonomy'))(options)
+            require('./endpoints/taxonomy')(options)
             break
         case 'usermanagement/local/group/':
-            require(path.join(process.cwd(), 'endpoints', 'group'))(options)
+            require('./endpoints/group')(options)
             break
         case 'usermanagement/local/role/':
-            require(path.join(process.cwd(), 'endpoints', 'role'))(options)
+            require('./endpoints/role')(options)
             break
         case 'usermanagement/local/user/':
-            require(path.join(process.cwd(), 'endpoints', 'user'))(options)
+            require('./endpoints/user')(options)
             break
         // fall back to raw URL mode
         default:

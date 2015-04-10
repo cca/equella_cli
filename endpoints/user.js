@@ -1,6 +1,5 @@
-var path = require('path')
-var req = require(path.join(process.cwd(), 'lib', 'req'))
-var handle = require(path.join(process.cwd(), 'lib', 'handle-error'))
+var req = require('../lib/req')
+var handle = require('../lib/handle-error')
 
 module.exports = function (options) {
     var query = options.name || options.q

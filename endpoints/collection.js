@@ -1,6 +1,5 @@
-var path = require('path')
-var req = require(path.join(process.cwd(), 'lib', 'req'))
-var findByName = require(path.join(process.cwd(), 'lib', 'find-by-name'))
+var req = require('../lib/req')
+var findByName = require('../lib/find-by-name')
 
 module.exports = function (options) {
     if (options.name) {
