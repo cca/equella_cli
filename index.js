@@ -13,6 +13,9 @@ var eq = function (options) {
     }
 
     switch (options.endpoint) {
+        case 'browsehierarchy/':
+            require('./endpoints/browsehierarchy')(options)
+            break
         case 'collection/':
             require('./endpoints/collection')(options)
             break

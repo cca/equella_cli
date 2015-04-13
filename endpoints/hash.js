@@ -1,9 +1,12 @@
 module.exports = {
+    browse: 'browsehierarchy/',
     coll: 'collection/',
     collection: 'collection/',
     collections: 'collection/',
     group: 'usermanagement/local/group/',
     groups: 'usermanagement/local/group/',
+    hier: 'browsehierarchy/',
+    hierarchy: 'browsehierarchy/',
     role: 'usermanagement/local/role/',
     roles: 'usermanagement/local/role/',
     tax: 'taxonomy/',
