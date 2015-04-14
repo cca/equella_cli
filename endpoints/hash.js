@@ -7,6 +7,7 @@ module.exports = {
     groups: 'usermanagement/local/group/',
     hier: 'browsehierarchy/',
     hierarchy: 'browsehierarchy/',
+    item: 'item/',
     role: 'usermanagement/local/role/',
     roles: 'usermanagement/local/role/',
     tax: 'taxonomy/',
