@@ -16,7 +16,7 @@ if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0
     process.exit(0)
 // admin console
 } else if (options.console || options.admin || options._[0] === 'console' || options._[0] === 'admin') {
-    var url = options.root.replace(/api\/$/,'admin.jnlp')
+    var url = options.root.replace(/api\/$/,'jnlp/admin.jnlp')
     console.log('Opening %s', url)
     open(url)
     process.exit(0)
