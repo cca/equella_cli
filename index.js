@@ -19,6 +19,9 @@ var eq = function (options) {
         case 'collection/':
             require('./endpoints/collection')(options)
             break
+        case 'item/':
+            require('./endpoints/item')(options)
+            break
         case 'taxonomy/':
             require('./endpoints/taxonomy')(options)
             break
