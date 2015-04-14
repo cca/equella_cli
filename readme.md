@@ -74,6 +74,17 @@ Shortcuts: group, groups
 > eq group --name 'Photography Faculty'
 ```
 
+#### Items
+
+Shortcuts: item
+
+```sh
+> # query item XML metadata using xpath
+> eq item '1234-abcd-1234-ab12cd34' --xp '//mods/titleInfo/title/text()'
+> # using --text will automatically append '/text()' onto the xpath
+> eq item '1234-abcd-1234-ab12cd34' --xp '//mods/titleInfo/title'
+```
+
 #### (Internal) Roles
 
 Shortcuts: role, roles
