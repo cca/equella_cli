@@ -79,10 +79,10 @@ Shortcuts: group, groups
 Shortcuts: item
 
 ```sh
-> # query item XML metadata using xpath
+> # query item XML metadata using xpath with -x or --xp flags
 > eq item '1234-abcd-1234-ab12cd34' --xp '//mods/titleInfo/title/text()'
 > # using --text will automatically append '/text()' onto the xpath
-> eq item '1234-abcd-1234-ab12cd34' --xp '//mods/titleInfo/title'
+> eq item '1234-abcd-1234-ab12cd34' -x '//mods/titleInfo/title' --text
 ```
 
 #### (Internal) Roles
