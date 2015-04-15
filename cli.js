@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+var fs = require('fs')
+var path = require('path')
 var open = require('opn')
 var req = require('./lib/req')
 var defaults = {
@@ -19,6 +21,12 @@ if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0
     var url = options.root.replace(/api\/$/,'jnlp/admin.jnlp')
     console.log('Opening %s', url)
     open(url)
+    process.exit(0)
+// version number
+} else if (options.version) {
+    var data = fs.readFileSync(path.resolve(__dirname, 'package.json'))
+    var pkg = JSON.parse(data)
+    console.log(pkg.version)
     process.exit(0)
 }
 
