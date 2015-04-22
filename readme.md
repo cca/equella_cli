@@ -15,7 +15,17 @@ Install node or [io.js](https://iojs.org) along with `npm`, install equella-cli 
 }
 ```
 
-See the EQUELLA REST API guide for instructions on generating an OAUTH token. It generally involves configuring a client, then visiting https://equella.mydomain.edu/oauth/authorize?response_type=token&client_id={{your client ID}}&redirect_uri=default
+Any option listed in the endpoints documentation can also be given a default in the rc file; the name of the configuration option is simply the command line flag minus the two leading hyphens. Values specified on the command line override rc values. Here are some potential options:
+
+```js
+{
+    "fullterm": false, // don't search full taxonomy term path
+    "leaf": true, // search leaf (bottom of hierarchy) taxonomy terms only
+    "top": true, // search top-level taxonomy terms only
+}
+```
+
+Consult the EQUELLA REST API guide for instructions on generating an OAUTH token. It involves configuring a client, then visiting https://equella.mydomain.edu/oauth/authorize?response_type=token&client_id={{your client ID}}&redirect_uri=default
 
 ## Additional Options
 
@@ -107,7 +117,7 @@ Shortcuts: tax, taxo, taxonomy
 > eq tax --name 'Semesters' --term 'Spring 2015'
 ```
 
-I haven't had success with looking up a term multiple layers deep into a taxonomy hierarchy, e.g. "Spring\\2015" but perhaps it's because I'm not escaping the slash properly.
+I haven't found success looking up a term multiple layers deep into a taxonomy hierarchy, e.g. "Spring\\2015" but perhaps it's because I'm not escaping the slash properly.
 
 Searching taxonomy terms is also supported, with options for all the search API settings. By default, the taxonomy term search looks in the full term, isn't restricted to top-level or leaf terms, and uses the default limit of 20 search results.
 
