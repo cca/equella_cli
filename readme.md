@@ -101,6 +101,23 @@ Shortcuts: tax, taxo, taxonomy
 ```sh
 > # look up taxonomy by name instead of UUID
 > eq tax --name 'Semesters'
+> # get all the top-level terms
+> eq tax --name 'Semesters' --terms
+> # look up a term or branch of terms within a taxonomy
+> eq tax --name 'Semesters' --term 'Spring 2015'
+```
+
+I haven't had success with looking up a term multiple layers deep into a taxonomy hierarchy, e.g. "Spring\\2015" but perhaps it's because I'm not escaping the slash properly.
+
+Searching taxonomy terms is also supported, with options for all the search API settings. By default, the taxonomy term search looks in the full term, isn't restricted to top-level or leaf terms, and uses the default limit of 20 search results.
+
+```sh
+> # search leaf (bottom of hierarchy) terms only
+> eq tax --name 'semesters' -s 'Spring 2014' --leaf
+> # search top-level terms only & get more results
+> eq tax --name 'semesters' -s 'Spring 2014' --top --limit 50
+> # don't search the full term path
+> eq tax --name 'semesters' -s 'Fall 2013' --fullterm=false
 ```
 
 #### (Internal) Users
