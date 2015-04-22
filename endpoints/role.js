@@ -3,8 +3,8 @@ var handle = require('../lib/handle-error')
 
 module.exports = function (options) {
     // @todo can't use findByName because plain "role" endpt
-    // just returns { "start": 0, "length": 137, "available": 137 }
-    // with no results list! possible permissions problem?
+    // just returns { "start": 0, "length": 23, "available": 23 }
+    // with no results list! bug in EQUELLA API according to support 4/22/15
     if (options.name) {
         options.path = 'name/' + options.name
         req(options, function (err, resp, data) {

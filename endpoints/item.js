@@ -1,7 +1,7 @@
 var req = require('../lib/req')
 var xpath = require('xpath')
 var Dom = require('xmldom').DOMParser
-// @todo implement item endpoint, see:
+// @todo more to implement in item endpoint, see:
 // apidocs.do#!/item
 
 module.exports = function (options) {

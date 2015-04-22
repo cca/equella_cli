@@ -27,8 +27,7 @@ module.exports = function (options) {
     if (search) {
         // putting search query string in append allows us to look up
         // the taxonomy by name first below
-        options.append = 'search?'
-        options.append += makeSearchOptions(search, options)
+        options.append = 'search?' + makeSearchOptions(search, options)
     } else if (options.term) {
         // support --term option to look up a term by its path
         // ignore if we're searching, can't do both at once

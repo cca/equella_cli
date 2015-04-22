@@ -10,6 +10,9 @@ var defaults = {
 var options = require('rc')('equella', defaults)
 require('./lib/validate-options')(options)
 
+// these options will only apply on command line
+// so no need to represent elsewhere e.g. in index.js
+
 // API documentation
 if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0] === 'docs') {
     var url = options.root.replace(/api\/$/,'apidocs.do')
