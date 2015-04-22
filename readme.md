@@ -67,7 +67,7 @@ See [the endpoints document](endpoints.md) for documentation on options and shor
 
 ```sh
 > # get the text of all top-level terms in a taxonomy
-> eq tax --name 'semesters' --append '/term' | jq '.[].term'
+> eq tax --name 'semesters' --terms | jq '.[].term'
 > # retrieve all the members of a group by its name
 > # then iterate over them printing out all their usernames (FISH loop, not BASH)
 > for user in (eq group --name 'system administrators' | jq '.users[]' | tr -d '"'); eq user $user | jq '.username'; end
