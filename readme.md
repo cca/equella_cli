@@ -129,6 +129,18 @@ Shortcuts: user, users
 > eq user --name 'xsun1' # -q also works
 ```
 
+## Use `jq`
+
+`eq` is really at its best in combination with a UNIX JSON utility like [jq](https://stedolan.github.io/jq/). By piping API results through `jq`, it's easier to extract the specific information we want as well as to iterate over results. For this reason, `eq` will not focus on tooling for extracting common fields from EQUELLA's JSON responses. Instead, we use `jq` in combination to achieve want we want, e.g.
+
+```sh
+> # get the text of all top-level terms in a taxonomy
+> eq tax --name 'semesters' --append '/term' | jq '.[].term'
+> # retrieve all the members of a group by its name
+> # then iterate over them printing out all their usernames (FISH loop, not BASH)
+> for user in (eq group --name 'system administrators' | jq '.users[]' | tr -d '"'); eq user $user | jq '.username'; end
+```
+
 ## LICENSE
 
 [Apache Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
