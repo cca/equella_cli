@@ -19,6 +19,7 @@ Any option listed in [the endpoints documentation](endpoints.md) can also be giv
 
 ```js
 {
+    "debug": true, // log URL requests to stderr
     "fullterm": false, // don't search full taxonomy term path
     "leaf": true, // search leaf (bottom of hierarchy) taxonomy terms only
     "top": true, // search top-level taxonomy terms only
@@ -26,10 +27,6 @@ Any option listed in [the endpoints documentation](endpoints.md) can also be giv
 ```
 
 Consult the EQUELLA REST API guide for instructions on generating an OAUTH token. It involves configuring a client, then visiting https://equella.mydomain.edu/oauth/authorize?response_type=token&client_id={{your client ID}}&redirect_uri=default
-
-## Additional Options
-
-**debug** — log request URLs to stderr (so you can still pipe output to a file without the debugging messages)
 
 ## Commands
 
