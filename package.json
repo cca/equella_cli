@@ -16,9 +16,9 @@
   "author": "phette23 <phette23@gmail.com> (http://phette.net)",
   "license": "Apache v. 2",
   "dependencies": {
-    "opn": "^1.0.1",
-    "rc": "^1.0.0",
-    "request": "^2.54.0",
+    "opn": "^1.0.2",
+    "rc": "^1.0.3",
+    "request": "^2.57.0",
     "xmldom": "^0.1.19",
     "xpath": "0.0.9"
   },
