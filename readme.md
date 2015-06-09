@@ -2,7 +2,7 @@
 
 Command line interface to the EQUELLA REST APIs.
 
-**WARNING** very much beta, use at your risk. In particular, `PUT` and `POST` requests don't yet lock the resources they're editing. Pretty usable for `GET`ting information, though.
+**WARNING** very much beta, use at your own risk. In particular, `PUT` and `POST` requests don't yet lock the resources they're editing. Pretty usable for `GET`ting information, though.
 
 ## Setup
 
