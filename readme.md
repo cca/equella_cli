@@ -10,7 +10,7 @@ Install node or [io.js](https://iojs.org) along with `npm`, install equella-cli 
 
 ```js
 {
-    "root": "https://equella.mydomain.edu/api/",
+    "root": "https://equella.mydomain.edu",
     "token": "abcd1234-ab12-1234-12ab-abcd1234abcd"
 }
 ```

@@ -11,7 +11,7 @@
     "url": "https://github.com/cca/equella_cli"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodeunit test"
   },
   "author": "phette23 <phette23@gmail.com> (http://phette.net)",
   "license": "Apache v. 2",
@@ -22,5 +22,7 @@
     "xmldom": "^0.1.19",
     "xpath": "0.0.9"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodeunit": "^0.9.1"
+  }
 }
