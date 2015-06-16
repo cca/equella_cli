@@ -8,7 +8,7 @@ Shortcuts: coll, collection, collections
 
 ```sh
 > # look up collection by name
-> eq coll --name 'Syllabus Collection' # -q also works
+> eq coll --name 'Syllabus Collection'
 ```
 
 To query EQUELLA collection info, by default you need to pass a "privilege" (EQUELLA permission) that the API account will have with the `--privilege` flag or in the URL path. `eq` defaults to `VIEW_ITEM` if you don't provide a privilege.
