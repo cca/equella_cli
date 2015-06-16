@@ -23,6 +23,8 @@ Any option listed in [the endpoints documentation](endpoints.md) can also be giv
     "fullterm": false, // don't search full taxonomy term path
     "leaf": true, // search leaf (bottom of hierarchy) taxonomy terms only
     "top": true, // search top-level taxonomy terms only
+    "username": "foo", // for signing into EQUELLA automatically via `login` command
+    "password": "bar"
 }
 ```
 
@@ -33,6 +35,8 @@ Consult the EQUELLA REST API guide for instructions on generating an OAUTH token
 ### Miscellaneous
 
 Helpful things. URLs open in your default browser.
+
+`eq login` — sign into EQUELLA using credentials in .equellarc file or `--username` and `--password` flags passed on the command line
 
 `eq docs`, `eq apidocs` — open the API documentation URL
 

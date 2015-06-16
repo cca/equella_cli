@@ -31,6 +31,24 @@ if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0
     var pkg = JSON.parse(data)
     console.log(pkg.version)
     process.exit(0)
+    // login via browser automatically
+} else if (options.login || options._[0] === 'login') {
+    if (!options.username || !options.password) {
+        console.error('Error! Login command requires a username & password in .equellarc or passed on the command line.')
+        process.exit(1)
+    } else {
+        // can pass values to form by referencing their input names in query string
+        // "event__" is some magic that triggers an internal EQUELLA function
+        // see `onclick=_subev('.authenticate')`` attribute of the log in button
+        var url = options.root.replace(/api\/$/, [
+            'logon.do?_username=',
+            options.username,
+            '&_password=',
+            options.password,
+            '&event__=.authenticate'].join(''))
+        open(url)
+        process.exit(0)
+    }
 }
 
 require('./index')(options)
