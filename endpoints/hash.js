@@ -1,4 +1,6 @@
 module.exports = {
+    acc: 'settings',
+    access: 'settings',
     browse: 'browsehierarchy/',
     coll: 'collection/',
     collection: 'collection/',
@@ -10,6 +12,8 @@ module.exports = {
     item: 'item/',
     role: 'usermanagement/local/role/',
     roles: 'usermanagement/local/role/',
+    set: 'settings',
+    settings: 'settings',
     tax: 'taxonomy/',
     taxo: 'taxonomy/',
     taxonomy: 'taxonomy/',
