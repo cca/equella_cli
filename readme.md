@@ -49,7 +49,7 @@ If you don't use one of the shortcuts for the various API endpoints, `eq` defaul
 ```sh
 > eq 'taxonomy/1234-4321-asda-asda-1231' # get specific taxonomy
 > eq 'collection/?privilege=VIEW_ITEM' # get collections for which you have VIEW_ITEM privilege
-> eq --method delete 'taxonomy/1234-asdasd-1234/term/1231231-1231231' # delete a term
+> eq --method del 'taxonomy/1234-asdasd-1234/term/1231231-1231231' # delete a term
 ```
 
 You can combine the endpoint shortcuts below with raw URL requests by appending the rest of the URL onto a shortcut. For instance:
