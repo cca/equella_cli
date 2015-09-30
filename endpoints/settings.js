@@ -8,6 +8,7 @@ module.exports = function (options) {
         diagnostics: root + 'diagnostics.do',
         language: root + 'language.do',
         liu: root + 'liu.do',
+        mdf: root + 'manualdatafixes.do',
         mime: root + 'mime.do',
         shortlinks: root + 'shortcuturlssettings.do',
         theme: root + 'themesettings.do'
@@ -19,6 +20,9 @@ module.exports = function (options) {
             break
         case 'dashboard':
             open(urls.dashboard)
+            break
+        case 'datafixes':
+            open(urls.mdf)
             break
         case 'diag':
             open(urls.diagnostics)
@@ -44,6 +48,15 @@ module.exports = function (options) {
         case 'logged-in':
             open(urls.liu)
             break
+        case 'manualdata':
+            open(urls.mdf)
+            break
+        case 'manualdatafixes':
+            open(urls.mdf)
+            break
+        case 'mdf':
+            open(urls.mdf)
+            break
         case 'mime':
             open(urls.mime)
             break
@@ -58,6 +71,9 @@ module.exports = function (options) {
             break
         case 'mime-types':
             open(urls.mime)
+            break
+        case 'reindex':
+            open(urls.mdf)
             break
         case 'short':
             open(urls.shortlinks)
