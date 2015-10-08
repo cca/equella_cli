@@ -42,6 +42,19 @@ Shortcuts: role, roles
 > eq role --name 'Student Contributor Role'
 ```
 
+#### Search
+
+Shortcuts: s, search
+
+```sh
+> # XML query, note comparison must be wrapped in single quotes
+> eq search --where "/mods/name/namePart LIKE 'Mike*'"
+> # complex query, *all* the parameters
+> eq search --query 'free text query' --order modified --start 10 --length 30 --collections 6b755832-4070-73d2-77b3-3febcc1f5fad --showall --info metadata
+> # same query as above but using all shorthand flags
+> eq s -q 'free text query' -o mod --start 10 -l 30 -c 6b755832-4070-73d2-77b3-3febcc1f5fad --all -i md
+```
+
 #### Taxonomy
 
 Shortcuts: tax, taxo, taxonomy
