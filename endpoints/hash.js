@@ -12,6 +12,8 @@ module.exports = {
     item: 'item/',
     role: 'usermanagement/local/role/',
     roles: 'usermanagement/local/role/',
+    s: 'search/',
+    search: 'search/',
     set: 'settings',
     settings: 'settings',
     tax: 'taxonomy/',
