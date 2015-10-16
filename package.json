@@ -1,6 +1,6 @@
 {
   "name": "equella-cli",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "access EQUELLA functions with its REST API",
   "main": "index.js",
   "bin": {
@@ -11,8 +11,8 @@
     "url": "https://github.com/cca/equella_cli"
   },
   "bugs": {
-      "url": "https://github.com/cca/equella_cli/issues",
-      "email": "phette23@gmail.com"
+    "url": "https://github.com/cca/equella_cli/issues",
+    "email": "phette23@gmail.com"
   },
   "homepage": "https://github.com/cca/equella_cli#readme",
   "scripts": {
@@ -20,10 +20,10 @@
   },
   "author": "phette23 <phette23@gmail.com> (http://phette.net)",
   "keywords": [
-      "equella",
-      "API",
-      "REST",
-      "command line"
+    "equella",
+    "API",
+    "REST",
+    "command line"
   ],
   "license": "Apache 2.0",
   "dependencies": {
@@ -37,6 +37,6 @@
     "nodeunit": "^0.9.1"
   },
   "engines": {
-      "node": ">=0.8"
+    "node": ">=0.8"
   }
 }
