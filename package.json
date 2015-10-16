@@ -10,10 +10,21 @@
     "type": "git",
     "url": "https://github.com/cca/equella_cli"
   },
+  "bugs": {
+      "url": "https://github.com/cca/equella_cli/issues",
+      "email": "phette23@gmail.com"
+  },
+  "homepage": "https://github.com/cca/equella_cli#readme",
   "scripts": {
     "test": "nodeunit test"
   },
   "author": "phette23 <phette23@gmail.com> (http://phette.net)",
+  "keywords": [
+      "equella",
+      "API",
+      "REST",
+      "command line"
+  ],
   "license": "Apache 2.0",
   "dependencies": {
     "opn": "^1.0.2",
@@ -24,5 +35,8 @@
   },
   "devDependencies": {
     "nodeunit": "^0.9.1"
+  },
+  "engines": {
+      "node": ">=0.8"
   }
 }
