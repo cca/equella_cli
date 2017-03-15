@@ -25,7 +25,7 @@
     "REST",
     "command line"
   ],
-  "license": "Apache 2.0",
+  "license": "ECL-2.0",
   "dependencies": {
     "opn": "^1.0.2",
     "rc": "^1.0.3",

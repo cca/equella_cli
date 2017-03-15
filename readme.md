@@ -77,6 +77,6 @@ See [the endpoints document](endpoints.md) for documentation on options and shor
 > for user in (eq group --name 'system administrators' | jq '.users[]' | tr -d '"'); eq user $user | jq '.username'; end
 ```
 
-## LICENSE
+# LICENSE
 
-[Apache Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+[ECL Version 2.0](https://opensource.org/licenses/ECL-2.0)
