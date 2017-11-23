@@ -92,4 +92,6 @@ module.exports = function (options) {
             console.error('Oh no, I don\'t know any settings shortcuts by the name %s!', dest)
             process.exit(1)
     }
+
+    process.exit(0)
 }
