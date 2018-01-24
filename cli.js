@@ -3,6 +3,7 @@ var fs = require('fs')
 var path = require('path')
 var open = require('opn')
 var req = require('./lib/req')
+var help = require('./lib/help')
 var defaults = {
     method: 'get',
     raw: true
@@ -50,6 +51,9 @@ if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0
         open(url)
         process.exit(0)
     }
+    // @TODO help should actually go first so we can offer help on all the flags above
+} else if (options.help || options.h) {
+    help(options)
 }
 
 // we're headed to an API route so modify the URL
