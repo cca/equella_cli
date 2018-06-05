@@ -28,8 +28,8 @@
   "license": "ECL-2.0",
   "dependencies": {
     "opn": "^5.3.0",
-    "rc": "^1.2.6",
-    "request": "^2.85.0",
+    "rc": "^1.2.8",
+    "request": "^2.87.0",
     "xmldom": "^0.1.19",
     "xpath": "0.0.27"
   },
