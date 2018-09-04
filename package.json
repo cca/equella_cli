@@ -34,7 +34,7 @@
     "xpath": "0.0.27"
   },
   "devDependencies": {
-    "nodeunit": "^0.11.2"
+    "nodeunit": "^0.11.3"
   },
   "engines": {
     "node": ">=0.8"
