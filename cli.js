@@ -2,7 +2,6 @@
 var fs = require('fs')
 var path = require('path')
 var open = require('opn')
-var req = require('./lib/req')
 var help = require('./lib/help')
 var defaults = {
     method: 'get',
