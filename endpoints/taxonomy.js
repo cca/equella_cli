@@ -34,9 +34,16 @@ module.exports = function (options) {
         options.append = 'term?path=' + options.term
     } else if (options.terms) {
         options.append = 'term'
+    // conditions above imply we're using GET /taxonomy/ route, append a large
+    // "length" parameter to ensure we get them all
+    } else if (options.method == 'get' && !options.path) {
+        options.path = '?length=5000'
+    } else if (options.method == 'get' && !options.path.match(/\?length=/)) {
+        options.path += '?length=5000'
     }
 
     if (options.name) {
+
         return findByName(options)
     } else {
         return req(options)
