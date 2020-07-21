@@ -29,8 +29,8 @@
   "dependencies": {
     "opn": "^6.0.0",
     "rc": "^1.2.8",
-    "request": "^2.88.0",
-    "xmldom": "^0.1.19",
+    "request": "^2.88.2",
+    "xmldom": "^0.1.31",
     "xpath": "0.0.27"
   },
   "devDependencies": {
