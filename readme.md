@@ -1,12 +1,14 @@
 # EQUELLA CLI
 
-Command line interface to the EQUELLA REST APIs.
+[![npm version](https://badge.fury.io/js/equella-cli.svg)](https://badge.fury.io/js/equella-cli)
 
-**WARNING** very much beta, use at your own risk. In particular, `PUT` and `POST` requests do not lock the resources they're editing. Safe for `GET`ting information, though.
+Command line interface to the openEQUELLA REST APIs.
+
+**WARNING** use at your own risk. In particular, `PUT` and `POST` requests do not lock the resources they're editing. Safe for `GET`ting information, though.
 
 ## Setup
 
-Install node or [io.js](https://iojs.org) along with `npm`, install equella-cli globally with `npm i -g equella-cli`, and finally configure an .equellarc file. The rc file can live in your user's home directory, the working directory where you're running `eq` commands, or any parent of the working directory. Really, [anywhere that `rc` looks](https://github.com/dominictarr/rc#standards). At a bare minimum, the rc file looks like:
+Install node, install equella-cli globally with `npm i -g equella-cli`, and configure an .equellarc file. The rc file can live in your user's home directory, the working directory where you're running `eq` commands, or any parent of the working directory. Really, [anywhere that `rc` looks](https://github.com/dominictarr/rc#standards). At a bare minimum, the rc file looks like:
 
 ```js
 {
@@ -28,7 +30,7 @@ Any option listed in [the endpoints documentation](endpoints.md) can also be giv
 }
 ```
 
-Consult the EQUELLA REST API guide for instructions on generating an OAUTH token. It involves configuring a client, then visiting https://equella.mydomain.edu/oauth/authorize?response_type=token&client_id={{your client ID}}&redirect_uri=default
+Consult the openEQUELLA REST API guide for instructions on generating an OAUTH token. It involves configuring a client, then visiting https://equella.mydomain.edu/oauth/authorize?response_type=token&client_id={{your client ID}}&redirect_uri=default
 
 ## Commands
 
@@ -63,7 +65,7 @@ The `--path` flag is also available for specifying a path after an endpoint.
 
 ## Endpoints
 
-See [the endpoints document](endpoints.md) for documentation on options and shortcuts related to specific API endpoints like taxonomy, groups, and items.
+See [the endpoints document](endpoints.md) for documentation on options and shortcuts related to specific API endpoints like taxonomy, groups, search, and items.
 
 ## Use `jq`
 
