@@ -1,10 +1,11 @@
-var req = require('../lib/req')
-var handle = require('../lib/handle-error')
+const req = require('../lib/req')
+const handle = require('../lib/handle-error')
 // @todo implement search endpoint, see:
 // apidocs.do#!/search
+// status are not implemented yet, follows the order/info validated format
 
 // order translation hash, allow some shortcuts
-var order = {
+const order = {
     alpha: 'name',
     date: 'modified',
     mod: 'modified',
@@ -19,7 +20,7 @@ var order = {
     title: 'name'
 }
 // same but for info parameter
-var info = {
+const info = {
     all: 'all',
     attachment: 'attachment',
     basic: 'basic',
@@ -40,7 +41,7 @@ module.exports = function (options) {
     options.path = options.path || '?'
 
     // free-text query string
-    var query = options.query || options.q || ''
+    let query = options.query || options.q || ''
     options.path += 'q=' + encodeURIComponent(query)
 
     // first record to return, e.g. for paging
@@ -49,21 +50,22 @@ module.exports = function (options) {
     }
 
     // number of results to retrieve
-    var len = options.length || options.l
-    // must be less than or equal to 50 but we don't need to validate
+    let len = options.length || options.l
+    // must be less than or equal to 50 so we don't need to validate
     // EQUELLA's error message is clear
     if (len) {
+        if (len > 50) len = 50 && console.error('The "length" parameter was reset to 50, the maximum.')
         options.path += '&length=' + len
     }
 
     // list of collections' UUIDs you want to search
-    var coll = options.collections || options.coll || options.c
+    let coll = options.collections || options.coll || options.c
     if (coll) {
         options.path += '&collections=' + coll
     }
 
     // ordering principle of returned results
-    var orderString = options.order || options.o
+    let orderString = options.order || options.o
     if (orderString) {
         if (order.hasOwnProperty(orderString)) {
             options.path += '&order=' + order[orderString]
@@ -78,13 +80,13 @@ module.exports = function (options) {
     }
 
     // XML query, e.g. "WHERE /xml/mods/titleInfo/title LIKE 'Crime and*'"
-    var where = options.where || options.w
+    let where = options.where || options.w
     if (where) {
         options.path += '&where=' + encodeURIComponent(where)
     }
 
     // level & type of information results should have
-    var infoString = options.info || options.i
+    let infoString = options.info || options.i
     if (infoString) {
         if (info.hasOwnProperty(infoString)) {
             options.path += '&info=' + info[infoString]
@@ -96,6 +98,27 @@ module.exports = function (options) {
                     '\nplease choose one of: basic, metadata, attachment, detail, navigation, drm, or all'
             })
         }
+    }
+
+    // last modified dates @TODO enforce ISO-8601 dates?
+    let modifiedAfter = options.modifiedAfter || options.ma
+    let modifiedBefore = options.modifiedBefore || options.mb
+    if (modifiedAfter) {
+        options.path += '&modifiedAfter=' + encodeURIComponent(modifiedAfter)
+    }
+    if (modifiedBefore) {
+        options.path += '&modifiedBefore=' + encodeURIComponent(modifiedBefore)
+    }
+
+    // owner (usually the user who created the item)
+    let owner = options.owner
+    if (owner) {
+        options.path += '&owner=' + encodeURIComponent(owner)
+    }
+
+    let reverse = options.reverse || options.r
+    if (reverse) {
+        options.path += '&reverse=true'
     }
 
     // a Boolean indicating whether non-live resources are shown, default false

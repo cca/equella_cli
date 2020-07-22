@@ -55,6 +55,22 @@ Shortcuts: s, search
 > eq s -q 'free text query' -o mod --start 10 -l 30 -c 6b755832-4070-73d2-77b3-3febcc1f5fad --all -i md
 ```
 
+There are many search filters that can be applied; it's best to reviews openEQUELLA's API docs to fully understand your options. This endpoint supports the following parameters (with their shortcuts in parenthesis):
+
+- query (q): free text query
+- start: item to start on (for paging through multiple results lists)
+- length (l): number of items to return (max 50)
+- collections (coll, c): comma-separated list of collection UUIDs to search
+- order (o): what metadata to sort the results by. The options are name, date modified (modified), rating, & relevance.
+- where (w): XPath-like "where" clause e.g. `--where="/metadata/title LIKE 'HELLO WORLD*'"`
+- info (i): what data to include in the results. The options are all, attachment, basic, detail, drm, metadata, & navigation. Note that results _do not_ include their XML metadata unless you ask for it in the "info" parameter.
+- modifiedAfter (ma) & modifiedBefore (mb): narrow by date modified, these are `YYYY-MM-DD` dates
+- owner: the user that owns the item. Only accepts one username (for external users) or UUID (for local/internal ones).
+- showall (all, show): boolean flag that defaults to `false`, include items that are not yet live, e.g. draft, archive, suspended, etc. statuses
+- reverse (r): boolean flag that defaults to `false`, reverse the order of the results
+
+The order and info parameters are validated against their possible options and have various shortcuts for common values, e.g. `--info=xml` for metadata.
+
 #### Taxonomy
 
 Shortcuts: tax, taxo, taxonomy
