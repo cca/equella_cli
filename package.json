@@ -30,8 +30,8 @@
     "opn": "^6.0.0",
     "rc": "^1.2.8",
     "request": "^2.88.2",
-    "xmldom": "^0.1.31",
-    "xpath": "0.0.27"
+    "xmldom": "^0.4.0",
+    "xpath": "^0.0.32"
   },
   "devDependencies": {
     "nodeunit": "^0.11.3"
