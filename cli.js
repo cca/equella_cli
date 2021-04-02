@@ -14,8 +14,11 @@ options.root = require('./lib/normalize-root')(options.root)
 // these options will only apply on command line
 // so no need to represent elsewhere e.g. in index.js
 
+// help documentation must go first
+if (options._[0] === 'help' || options.help || options.h) {
+    return help(options)
 // API documentation
-if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0] === 'docs') {
+} else if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0] === 'docs') {
     var url = options.root + 'apidocs.do'
     console.log('Opening %s', url)
     open(url)
@@ -50,9 +53,6 @@ if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0
         open(url)
         process.exit(0)
     }
-    // @TODO help should actually go first so we can offer help on all the flags above
-} else if (options.help || options.h) {
-    help(options)
 }
 
 // we're headed to an API route so modify the URL
