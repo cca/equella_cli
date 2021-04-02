@@ -80,6 +80,7 @@ module.exports = function (options) {
     }
 
     // XML query, e.g. "WHERE /xml/mods/titleInfo/title LIKE 'Crime and*'"
+    // @TODO prepend /xml if it's not already present because it's required
     let where = options.where || options.w
     if (where) {
         options.path += '&where=' + encodeURIComponent(where)
