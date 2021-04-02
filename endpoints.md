@@ -1,6 +1,6 @@
 ### Endpoints
 
-A series of configured endpoint shortcuts are available. A common feature of these shortcuts is that they allow you to retrieve an object by its _name_ (case insensitive, usually) rather than its UUID.
+A series of configured endpoint shortcuts are available. A common feature of these shortcuts is that they allow you to retrieve an object by its _name_ (case insensitive) rather than its UUID.
 
 #### Collections
 
