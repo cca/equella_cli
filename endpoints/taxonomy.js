@@ -43,7 +43,6 @@ module.exports = function (options) {
     }
 
     if (options.name) {
-
         return findByName(options)
     } else {
         return req(options)
