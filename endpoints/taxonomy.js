@@ -1,8 +1,8 @@
-var req = require('../lib/req')
-var findByName = require('../lib/find-by-name')
-var qs = require('querystring')
-var makeSearchOptions = function (query, options) {
-    var restriction = options.restriction || options.restrict || 'UNRESTRICTED'
+const req = require('../lib/req')
+const findByName = require('../lib/find-by-name')
+const qs = require('querystring')
+const makeSearchOptions = function (query, options) {
+    let restriction = options.restriction || options.restrict || 'UNRESTRICTED'
 
     // shorthands for the two other options
     if (options.leaf) {
@@ -22,7 +22,7 @@ var makeSearchOptions = function (query, options) {
 }
 
 module.exports = function (options) {
-    var search = (options.search || options.s || options.serach)
+    let search = (options.search || options.s || options.serach)
 
     if (search) {
         // putting search query string in append allows us to look up
