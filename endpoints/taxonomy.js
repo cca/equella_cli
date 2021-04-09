@@ -27,13 +27,13 @@ module.exports = function (options) {
     if (search) {
         // putting search query string in append allows us to look up
         // the taxonomy by name first below
-        options.append = 'search?' + makeSearchOptions(search, options)
+        options.append = '/search?' + makeSearchOptions(search, options)
     } else if (options.term) {
         // support --term option to look up a term by its path
         // ignore if we're searching, can't do both at once
-        options.append = 'term?path=' + options.term
+        options.append = '/term?path=' + options.term
     } else if (options.terms) {
-        options.append = 'term'
+        options.append = '/term'
     // conditions above imply we're using GET /taxonomy/ route, append a large
     // "length" parameter to ensure we get them all
     } else if (options.method == 'get' && !options.path) {
@@ -45,6 +45,7 @@ module.exports = function (options) {
     if (options.name) {
         return findByName(options)
     } else {
+        if (options.append) options.path += options.append
         return req(options)
     }
 }
