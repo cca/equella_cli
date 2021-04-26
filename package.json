@@ -27,6 +27,7 @@
   ],
   "license": "ECL-2.0",
   "dependencies": {
+    "clipboardy": "^2.3.0",
     "opn": "^6.0.0",
     "rc": "^1.2.8",
     "request": "^2.88.2",
