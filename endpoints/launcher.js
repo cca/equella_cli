@@ -22,7 +22,7 @@ module.exports = function (options) {
             if (options.password) {
                 // this is actually async but it will always be quicker than
                 // running the launcher so we don't care
-                clipboardy.write(options.password)
+                clipboardy.writeSync(options.password)
             }
             // https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options
             // see the meaning of stdio option in particular
