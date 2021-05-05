@@ -58,10 +58,10 @@ You can combine the endpoint shortcuts below with raw URL requests by appending 
 
 ```sh
 > # list all taxonomy terms using both a shortcut & a specific path
-> eq tax '1234-4321-asda-asda-1231/term'
+> eq tax '1234-4321-asda/term'
 ```
 
-The `--path` flag is also available for specifying a path after an endpoint.
+The `--path` flag is also available for specifying a path that comes after the API endpoint and any UUID. So `eq tax '1234-4321-asda/term` is equivalent to `eq tax 1234-4321-asda --path term`.
 
 ## Endpoints
 
