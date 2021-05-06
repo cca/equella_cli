@@ -1,0 +1,7 @@
+{
+    "term": "Second Thing (with data)",
+    "data": {
+        "data key": "data value",
+        "another": "one"
+    }
+}
