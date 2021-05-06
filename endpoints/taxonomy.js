@@ -1,51 +1,64 @@
 const req = require('../lib/req')
 const findByName = require('../lib/find-by-name')
-const qs = require('querystring')
-const makeSearchOptions = function (query, options) {
-    let restriction = options.restriction || options.restrict || 'UNRESTRICTED'
+const makeSearchOptions = function (query, opts) {
+    let restriction = opts.restriction || opts.restrict || 'UNRESTRICTED'
 
     // shorthands for the two other options
-    if (options.leaf) {
+    if (opts.leaf) {
         restriction = 'LEAF_ONLY'
-    } else if (options.top) {
+    } else if (opts.top) {
         restriction = 'TOP_LEVEL_ONLY'
     }
 
-    return qs.stringify({
+    let qs = new URLSearchParams({
         'q': query,
-        // upper case since people might pass in lowercase on the cli
         'restriction': restriction.toUpperCase(),
-        // default to searching full term, unlike the API
-        'searchfullterm': options.fullterm || 'true',
-        'limit': options.limit || 20
+        // default to searching full term unlike the API
+        'searchfullterm': opts.fullterm || 'true',
+        'limit': opts.limit || 20
     })
+
+    return qs
 }
 
+/*
+A note on options.path vs options.append: options.path comes after the API
+route to a single object i.e. {root}/taxonomy/{UUID}/{path} while append is only
+used if we first look up an object by its name, then after we find it append
+becomes the path.
+*/
 module.exports = function (options) {
     let search = (options.search || options.s || options.serach)
+    options.append = options.append || ''
+    if (options.method == 'get') options.path = options.path || ''
+    // if we're using --name we put path things in append, if not we put them in
+    // path, this abstracts over that
+    let appendOrPath = options.name ? 'append' : 'path'
 
     if (search) {
         // putting search query string in append allows us to look up
         // the taxonomy by name first below
-        options.append = '/search?' + makeSearchOptions(search, options)
+        options[appendOrPath] += '/search'
+        options.qs = makeSearchOptions(search, options)
     } else if (options.term) {
         // support --term option to look up a term by its path
         // ignore if we're searching, can't do both at once
-        options.append = '/term?path=' + options.term
+        if (typeof options.term === 'boolean') {
+            console.error(
+`Error: --term flag requires an argument. If you are not looking up a term by
+its path, then try using --terms or eq tax $UUID/term instead.`
+            )
+            process.exit(1)
+        }
+        options[appendOrPath] += '/term'
+        options.qs = new URLSearchParams({ 'path': options.term })
     } else if (options.terms) {
-        options.append = '/term'
-    // conditions above imply we're using GET /taxonomy/ route, append a large
-    // "length" parameter to ensure we get them all
-    } else if (options.method == 'get' && !options.path) {
-        options.path = '?length=5000'
-    } else if (options.method == 'get' && !options.path.match(/\?length=/)) {
-        options.path += '?length=5000'
+        options[appendOrPath] += '/term'
     }
 
-    if (options.name) {
-        return findByName(options)
-    } else {
-        if (options.append) options.path += options.append
-        return req(options)
-    }
+    // tack query string onto path before making any requests
+    if (options.qs) options[appendOrPath] += `?${options.qs.toString()}`
+
+    if (options.name) return findByName(options)
+    return req(options)
 }
