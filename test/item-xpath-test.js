@@ -41,7 +41,7 @@ async function testXpathText(test) {
 
 async function deleteTestItem(cb) {
     const { stdout, stderr } = await exec(`eq item --method delete ${itemID}`)
-    console.error(stderr)
+    err(stderr)
     console.log(`Deleted test item ${itemID}`)
     cb()
 }
