@@ -6,7 +6,15 @@ var eq = function (options) {
     // do we have an endpoint shortcut for the first arg?
     if (endpoints[options._[0]] !== undefined) {
         options.endpoint = endpoints[options._[0]]
-        options.path = options.path || options._[1]
+        // better handling of uses like `eq tax $UUID term` where multiple
+        // arguments are strung together instead of using flags and only the
+        // first arg is an endpoint
+        if (options.path && options._.length > 1) {
+            // tack any --path parameter onto the end of arguments
+            options.path = options._.slice(1).concat(options.path).join('/')
+        } else {
+            options.path = options.path || options._.slice(1).join('/') || ''
+        }
     } else {
         // else default to first arg is whole endpoint
         options.endpoint = options.endpoint || options._[0]
