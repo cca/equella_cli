@@ -15,7 +15,7 @@ options.root = require('./lib/normalize-root')(options.root)
 // so no need to represent elsewhere e.g. in index.js
 
 // help documentation must go first
-if (options._[0] === 'help' || options.help || options.h) {
+if (options._[0] === 'help' || options.help || options.h || !options._.length) {
     return help(options)
 // API documentation
 } else if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0] === 'docs') {
