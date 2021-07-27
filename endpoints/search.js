@@ -73,8 +73,8 @@ module.exports = function (options) {
             // see handle-error fn for why syntax is like this
             return handle(null, {
                 'error': true,
-                'error_description': 'unrecognized "order" value: ' + orderString +
-                    '\nplease choose one of: modified, name, rating, or relevance'
+                'error_description': `unrecognized "order" value: ${orderString}
+please choose one of: modified, name, rating, or relevance.`
             })
         }
     }
@@ -95,8 +95,8 @@ module.exports = function (options) {
             // see handle-error fn for why syntax is like this
             return handle(null, {
                 'error': true,
-                'error_description': 'unrecognized "info" value: ' + orderString +
-                    '\nplease choose one of: basic, metadata, attachment, detail, navigation, drm, or all'
+                'error_description': `unrecognized "info" value: ${infoString}
+please choose one of: basic, metadata, attachment, detail, navigation, drm, or all.`
             })
         }
     }
