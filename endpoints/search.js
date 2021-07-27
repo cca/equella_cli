@@ -5,7 +5,7 @@ const handle = require('../lib/handle-error')
 // status are not implemented yet, follows the order/info validated format
 
 // order translation hash, allow some shortcuts
-const order = {
+const ORDER_OPTIONS = {
     alpha: 'name',
     date: 'modified',
     mod: 'modified',
@@ -20,7 +20,7 @@ const order = {
     title: 'name'
 }
 // same but for info parameter
-const info = {
+const INFO_OPTIONS = {
     all: 'all',
     attachment: 'attachment',
     basic: 'basic',
@@ -67,8 +67,8 @@ module.exports = function (options) {
     // ordering principle of returned results
     let orderString = options.order || options.o
     if (orderString) {
-        if (order.hasOwnProperty(orderString)) {
-            options.path += '&order=' + order[orderString]
+        if (ORDER_OPTIONS.hasOwnProperty(orderString)) {
+            options.path += '&order=' + ORDER_OPTIONS[orderString]
         } else {
             // see handle-error fn for why syntax is like this
             return handle(null, {
@@ -88,9 +88,10 @@ please choose one of: modified, name, rating, or relevance.`
 
     // level & type of information results should have
     let infoString = options.info || options.i
-    if (infoString) {
-        if (info.hasOwnProperty(infoString)) {
-            options.path += '&info=' + info[infoString]
+    let infos = infoString.split(',')
+    if (infos.length) {
+        if (infos.every(term => INFO_OPTIONS.hasOwnProperty(term))) {
+            options.path += '&info=' + infos.map(term => INFO_OPTIONS[term]).join(',')
         } else {
             // see handle-error fn for why syntax is like this
             return handle(null, {
