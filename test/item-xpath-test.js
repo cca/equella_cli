@@ -1,6 +1,6 @@
 /*jshint esversion: 8 */
 // @NOTE: this test requires a test collection with a UUID referenced inside
-// test/fixtures/test-item.js
+// test/fixtures/test-item.json
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 const xpath = require('xpath')
