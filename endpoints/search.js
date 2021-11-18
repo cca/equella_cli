@@ -87,7 +87,7 @@ please choose one of: modified, name, rating, or relevance.`
     }
 
     // level & type of information results should have
-    let infoString = options.info || options.i
+    let infoString = options.info || options.i || 'basic'
     let infos = infoString.split(',')
     if (infos.length) {
         if (infos.every(term => INFO_OPTIONS.hasOwnProperty(term))) {
