@@ -1,3 +1,4 @@
+const list = require('../lib/list')
 const req = require('../lib/req')
 const handle = require('../lib/handle-error')
 // @todo implement search endpoint, see:
@@ -34,6 +35,19 @@ const INFO_OPTIONS = {
     nav: 'navigation',
     navigation: 'navigation',
     xml: 'metadata'
+}
+// valid statuses
+const STATUS_OPTIONS = {
+    archived: 'ARCHIVED',
+    deleted: 'DELETED',
+    draft: 'DRAFT',
+    live: 'LIVE',
+    moderating: 'MODERATING',
+    personal: 'PERSONAL',
+    published: 'LIVE',
+    rejected: 'REJECTED',
+    review: 'REVIEW',
+    suspended: 'SUSPENDED',
 }
 
 module.exports = function (options) {
@@ -73,8 +87,8 @@ module.exports = function (options) {
             // see handle-error fn for why syntax is like this
             return handle(null, {
                 'error': true,
-                'error_description': `unrecognized "order" value: ${orderString}
-please choose one of: modified, name, rating, or relevance.`
+                'error_description': `Unrecognized "order" value: ${orderString}
+Please choose one of: ${list(Object.keys(ORDER_OPTIONS), 'or')}.`
             })
         }
     }
@@ -99,8 +113,25 @@ please choose one of: modified, name, rating, or relevance.`
             // see handle-error fn for why syntax is like this
             return handle(null, {
                 'error': true,
-                'error_description': `unrecognized "info" value: ${infoString}
-please choose one of: basic, metadata, attachment, detail, navigation, drm, or all.`
+                'error_description': `Unrecognized "info" value: ${infoString}
+Please choose from: ${list(Object.keys(INFO_OPTIONS), 'and/or')}.`
+            })
+        }
+    }
+
+    // item statuses filter
+    let statusString = options.status || options.s || null
+    let statuses = statusString ? statusString.split(',') : []
+    if (statuses.length) {
+        console.log(statuses)
+        if (statuses.every(status => STATUS_OPTIONS.hasOwnProperty(status) || STATUS_OPTIONS.hasOwnProperty(status.toLowerCase()))) {
+            options.path += '&status=' + statuses.map(status => STATUS_OPTIONS[status]).join(',')
+        } else {
+            // see handle-error fn for why syntax is like this
+            return handle(null, {
+                'error': true,
+                'error_description': `Unrecognized "status" value: ${statusString}
+Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
             })
         }
     }
@@ -127,7 +158,7 @@ please choose one of: basic, metadata, attachment, detail, navigation, drm, or a
     }
 
     // a Boolean indicating whether non-live resources are shown, default false
-    if (options.showall || options.all || options.show) {
+    if (!statusString && options.showall || options.all || options.show) {
         options.path += '&showall=true'
     }
 

@@ -1,8 +1,8 @@
-### Endpoints
+# Endpoints
 
 A series of configured endpoint shortcuts are available. A common feature of these shortcuts is that they allow you to retrieve an object by its _name_ (case insensitive) rather than its UUID.
 
-#### Collections
+## Collections
 
 Shortcuts: coll, collection, collections
 
@@ -13,7 +13,7 @@ Shortcuts: coll, collection, collections
 
 To query EQUELLA collection info, by default you need to pass a "privilege" (EQUELLA permission) that the API account will have with the `--privilege` flag or in the URL path. `eq` defaults to `VIEW_ITEM` if you don't provide a privilege.
 
-#### (Internal) Groups
+## (Internal) Groups
 
 Shortcuts: group, groups
 
@@ -22,7 +22,7 @@ Shortcuts: group, groups
 > eq group --name 'Photography Faculty'
 ```
 
-#### Items
+## Items
 
 Shortcuts: item
 
@@ -33,7 +33,7 @@ Shortcuts: item
 > eq item '1234-abcd-1234-ab12cd34' -x '//mods/titleInfo/title' --text
 ```
 
-#### (Internal) Roles
+## (Internal) Roles
 
 Shortcuts: role, roles
 
@@ -42,7 +42,7 @@ Shortcuts: role, roles
 > eq role --name 'Student Contributor Role'
 ```
 
-#### Search
+## Search
 
 Shortcuts: s, search
 
@@ -67,11 +67,12 @@ There are many search filters that can be applied; it's best to review openEQUEL
 - modifiedAfter (ma) & modifiedBefore (mb): narrow by date modified, these are `YYYY-MM-DD` dates
 - owner: the user that owns the item. Only accepts one username (for external users) or UUID (for local/internal ones).
 - showall (all, show): boolean flag that defaults to `false`, include items that are not yet live, e.g. draft, archive, suspended, etc. statuses
+- status (s): include items with only these statuses. The options are archived, deleted, draft, live, moderating, personal, rejected, review, and suspended. The presence of this option will override `showall` since the two conflict.
 - reverse (r): boolean flag that defaults to `false`, reverse the order of the results
 
 The order and info parameters are validated against their possible options and have various shortcuts for common values, e.g. `--info=xml` for metadata.
 
-#### Taxonomy
+## Taxonomy
 
 Shortcuts: tax, taxo, taxonomy
 
@@ -97,7 +98,7 @@ Searching taxonomy terms is also supported, with options for all the search API 
 > eq tax --name 'semesters' -s 'Fall 2013' --fullterm=false
 ```
 
-#### (Internal) Users
+## (Internal) Users
 
 Shortcuts: user, users
 
