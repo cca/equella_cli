@@ -55,7 +55,7 @@ Shortcuts: s, search
 > eq s -q 'free text query' -o mod --start 10 -l 30 -c 6b755832-4070-73d2-77b3-3febcc1f5fad --all -i md
 ```
 
-There are many search filters that can be applied; it's best to reviews openEQUELLA's API docs to fully understand your options. This endpoint supports the following parameters (with their shortcuts in parenthesis):
+There are many search filters that can be applied; it's best to review openEQUELLA's API docs to fully understand your options. This endpoint supports the following parameters (with their shortcuts in parenthesis):
 
 - query (q): free text query
 - start: item to start on (for paging through multiple results lists)
