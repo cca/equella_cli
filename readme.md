@@ -30,7 +30,7 @@ Any option listed in [the endpoints documentation](endpoints.md) can also be giv
 }
 ```
 
-Consult the openEQUELLA REST API guide for instructions on generating an OAUTH token. It involves configuring a client, then visiting https://equella.mydomain.edu/oauth/authorize?response_type=token&client_id={{your client ID}}&redirect_uri=default
+Consult the openEQUELLA REST API guide for instructions on generating an OAUTH token. It involves configuring a client, then visiting https://equella.mydomain.edu/oauth/authorize?response_type=token&client_id=$CLIENT_ID&redirect_uri=default
 
 ## Commands
 
@@ -79,6 +79,10 @@ See [the endpoints document](endpoints.md) for documentation on options and shor
 > for user in (eq group --name 'system administrators' | jq '.users[]' | tr -d '"'); eq user $user | jq '.username'; end
 ```
 
-# LICENSE
+## Invalid SSL Certificates
+
+We can work around unrecognized/invalid SSL certificates in Node by setting the `NODE_TLS_REJECT_UNAUTHORIZED` environment variable to `0`, e.g., `export NODE_TLS_REJECT_UNAUTHORIZED=0` in Bash or `set -gx NODE_TLS_REJECT_UNAUTHORIZED 0` in Fish. Node will print runtime warnings to stderr but otherwise this is a good way to work around certificates our system doesn't recognize as valid yet. openEQUELLA forces you to use HTTPS for most (all?) API routes, so otherwise we're stuck.
+
+## LICENSE
 
 [ECL Version 2.0](https://opensource.org/licenses/ECL-2.0)
