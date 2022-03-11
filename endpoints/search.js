@@ -80,9 +80,12 @@ please choose one of: modified, name, rating, or relevance.`
     }
 
     // XML query, e.g. "WHERE /xml/mods/titleInfo/title LIKE 'Crime and*'"
-    // @TODO prepend /xml if it's not already present because it's required
     let where = options.where || options.w
     if (where) {
+        // prepend /xml if it's not already present because it's required
+        if (where.indexOf('/xml') === -1) {
+            where = where.charAt('/') !== '/' ? '/xml/' + where : '/xml' + where
+        }
         options.path += '&where=' + encodeURIComponent(where)
     }
 
