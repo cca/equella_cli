@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
-const open = require('opn')
+const open = require('open')
 const help = require('./lib/help')
 const defaults = {
     method: 'get',

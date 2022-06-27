@@ -1,4 +1,4 @@
-var open = require('opn')
+var open = require('open')
 
 module.exports = function (options) {
     var dest = options._[1]
