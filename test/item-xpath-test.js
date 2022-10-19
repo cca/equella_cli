@@ -4,7 +4,7 @@
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 const xpath = require('xpath')
-const Dom = require('xmldom').DOMParser
+const Dom = require('@xmldom/xmldom').DOMParser
 const testData = require('./fixtures/test-item.json')
 const err = (e) => { if (e) console.error(e) }
 

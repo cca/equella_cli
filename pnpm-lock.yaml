@@ -1,20 +1,20 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@xmldom/xmldom': ^0.8.3
   clipboardy: ^2.3.0
   nodeunit: ^0.11.3
   open: ^8.4.0
   rc: ^1.2.8
   request: ^2.88.2
-  xmldom: ^0.6.0
   xpath: ^0.0.32
 
 dependencies:
+  '@xmldom/xmldom': 0.8.3
   clipboardy: 2.3.0
   open: 8.4.0
   rc: 1.2.8
   request: 2.88.2
-  xmldom: 0.6.0
   xpath: 0.0.32
 
 devDependencies:
@@ -123,6 +123,11 @@ packages:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
     dev: true
+
+  /@xmldom/xmldom/0.8.3:
+    resolution: {integrity: sha512-Lv2vySXypg4nfa51LY1nU8yDAGo/5YwF+EY/rUZgIbfvwVARcd67ttCM8SMsTeJy51YhHYavEq+FS6R0hW9PFQ==}
+    engines: {node: '>=10.0.0'}
+    dev: false
 
   /ajv/6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
@@ -1624,11 +1629,6 @@ packages:
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
     dev: true
-
-  /xmldom/0.6.0:
-    resolution: {integrity: sha512-iAcin401y58LckRZ0TkI4k0VSM1Qg0KGSc3i8rU+xrxe19A/BN1zHyVSJY7uoutVlaTSzYyk/v5AmkewAP7jtg==}
-    engines: {node: '>=10.0.0'}
-    dev: false
 
   /xpath/0.0.32:
     resolution: {integrity: sha512-rxMJhSIoiO8vXcWvSifKqhvV96GjiD5wYb8/QHdoRyQvraTpp4IEv944nhGausZZ3u7dhQXteZuZbaqfpB7uYw==}

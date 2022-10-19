@@ -1,6 +1,6 @@
 const req = require('../lib/req')
 const xpath = require('xpath')
-const Dom = require('xmldom').DOMParser
+const Dom = require('@xmldom/xmldom').DOMParser
 // @todo more to implement in item endpoint, see:
 // apidocs.do#!/item
 
