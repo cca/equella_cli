@@ -30,7 +30,7 @@ if (options._[0] === 'help' || options.help || options.h || !options._.length) {
     open(url)
     process.exit(0)
 // version number
-} else if (options.version) {
+} else if (options._[0] === 'version') {
     const data = fs.readFileSync(path.resolve(__dirname, 'package.json'))
     const pkg = JSON.parse(data)
     console.log(pkg.version)
