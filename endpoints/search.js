@@ -3,7 +3,9 @@ const req = require('../lib/req')
 const handle = require('../lib/handle-error')
 // @todo implement search endpoint, see:
 // apidocs.do#!/search
-// status are not implemented yet, follows the order/info validated format
+// only dynacollection and advancedsearch options are left
+// & neither is very important (can be accomplished through
+// existing functionality?)
 
 // order translation hash, allow some shortcuts
 const ORDER_OPTIONS = {
@@ -123,7 +125,6 @@ Please choose from: ${list(Object.keys(INFO_OPTIONS), 'and/or')}.`
     let statusString = options.status || options.s || null
     let statuses = statusString ? statusString.split(',') : []
     if (statuses.length) {
-        console.log(statuses)
         if (statuses.every(status => STATUS_OPTIONS.hasOwnProperty(status) || STATUS_OPTIONS.hasOwnProperty(status.toLowerCase()))) {
             options.path += '&status=' + statuses.map(status => STATUS_OPTIONS[status]).join(',')
         } else {
