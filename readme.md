@@ -42,6 +42,8 @@ Helpful things. URLs open in your default browser.
 
 `eq docs`, `eq apidocs` — open the API documentation URL
 
+`eq launch` - run the new admin console launcher, requires a `launcherPath` option that points to the script.
+
 `eq admin`, `eq console` — opens the download URL for the EQUELLA admin console Java app
 
 ### Raw URL Mode
