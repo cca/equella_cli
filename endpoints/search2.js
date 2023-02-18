@@ -58,7 +58,7 @@ module.exports = function (options) {
 
     // free-text query string
     let query = options.query || options.q || ''
-    options.path += 'q=' + encodeURIComponent(query)
+    options.path += 'query=' + encodeURIComponent(query)
 
     // first record to return, e.g. for paging
     if (options.start) {
@@ -102,7 +102,7 @@ Please choose one of: ${list(Object.keys(ORDER_OPTIONS), 'or')}.`
         if (where.indexOf('/xml') === -1) {
             where = where.charAt('/') !== '/' ? '/xml/' + where : '/xml' + where
         }
-        options.path += '&where=' + encodeURIComponent(where)
+        options.path += '&whereClause=' + encodeURIComponent(where)
     }
 
     // level & type of information results should have
@@ -155,8 +155,18 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
 
     let reverse = options.reverse || options.r
     if (reverse) {
-        options.path += '&reverse=true'
+        options.path += '&reverseOrder=true'
     }
+
+    // @TODO searchAttachments
+
+    // @TODO includeAttachments
+
+    // @TODO advancedSearch
+
+    // @TODO mimeTypes
+
+    // @TODO musts
 
     // a Boolean indicating whether non-live resources are shown, default false
     if (!statusString && options.showall || options.all || options.show) {
