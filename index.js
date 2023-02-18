@@ -36,6 +36,9 @@ var eq = function (options) {
         case 'search/':
             require('./endpoints/search')(options)
             break
+        case 'search2/':
+            require('./endpoints/search2')(options)
+            break
         case 'settings':
             require('./endpoints/settings')(options)
             break
