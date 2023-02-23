@@ -1,11 +1,6 @@
 const list = require('../lib/list')
 const req = require('../lib/req')
 const handle = require('../lib/handle-error')
-// @todo implement search endpoint, see:
-// apidocs.do#!/search
-// only dynacollection and advancedsearch options are left
-// & neither is very important (can be accomplished through
-// existing functionality?)
 
 // order translation hash, allow some shortcuts
 const ORDER_OPTIONS = {

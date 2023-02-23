@@ -1,11 +1,7 @@
 const list = require('../lib/list')
 const req = require('../lib/req')
 const handle = require('../lib/handle-error')
-// @todo implement search endpoint, see:
-// apidocs.do#!/search
-// only dynacollection and advancedsearch options are left
-// & neither is very important (can be accomplished through
-// existing functionality?)
+const checkUUID = require('../lib/checkUUID')
 
 // order translation hash, allow some shortcuts
 const ORDER_OPTIONS = {
@@ -158,11 +154,23 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
         options.path += '&reverseOrder=true'
     }
 
-    // @TODO searchAttachments
+    // searchAttachments defaults to true
+    if (options.searchAttachments === 'false') {
+        options.path += '&searchAttachments=false'
+    }
 
-    // @TODO includeAttachments
+    // includeAttachments defaults to true
+    if (options.includeAttachments === 'false') {
+        options.path += '&includeAttachments=false'
+    }
 
-    // @TODO advancedSearch
+    // advancedSearch
+    if (options.advancedSearch) {
+        // oE sends a helpful "no advanced search UUID matching..." error message
+        // but we will also provide a bit of extra help
+        if (!checkUUID(options.advancedSearch)) console.error('The --advancedSearch flag must be set to a valid power search UUID.\nTry `eq settings/advancedsearch` to see the full list.')
+        options.path += '&advancedSearch=' + encodeURIComponent(options.advancedSearch)
+    }
 
     // @TODO mimeTypes
 
