@@ -49,7 +49,7 @@ const STATUS_OPTIONS = {
 }
 
 module.exports = function (options) {
-    // initialize as we'll use this repeatedly below
+    // CSV export, this has special handling in lib/req.js to set the Accept header
     if (options.e || options.export) {
         options.path = 'export'
     }
@@ -176,9 +176,15 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
         qs.advancedSearch = encodeURIComponent(options.advancedSearch)
     }
 
-    // @TODO mimeTypes
+    // mimeTypes and musts are both arrays so qs will serialize them as multiple
+    // of the same parameter, e.g. mimeTypes=video/mp4&mimeTypes=video/ogg
 
-    // @TODO musts
+    let mt = options.mimeTypes || options.mt
+    if (mt) {
+        // also does not work with encodeURIComponent
+        qs.mimeTypes = mt.split(',').map(mt => encodeURI(mt))
+    }
+
     if (options.musts) {
         // note: throws error "Provided 'musts' expression(s) was incorrectly formatted."
         // if you try to use encodeURIComponent
