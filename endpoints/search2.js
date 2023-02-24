@@ -48,7 +48,7 @@ const STATUS_OPTIONS = {
     suspended: 'SUSPENDED',
 }
 
-module.exports = function (options) {
+module.exports = function (options, cb) {
     // CSV export, this has special handling in lib/req.js to set the Accept header
     if (options.e || options.export) {
         options.path = 'export'
@@ -196,5 +196,5 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
         qs.showall = true
     }
 
-    return req(options)
+    return req(options, cb)
 }
