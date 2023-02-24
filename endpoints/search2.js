@@ -50,15 +50,19 @@ const STATUS_OPTIONS = {
 
 module.exports = function (options) {
     // initialize as we'll use this repeatedly below
-    options.path = options.path || '?'
+    if (options.e || options.export) {
+        options.path = 'export'
+    }
+
+    let qs = options.querystring = {}
 
     // free-text query string
     let query = options.query || options.q || ''
-    options.path += 'query=' + encodeURIComponent(query)
+    qs.query = encodeURIComponent(query)
 
     // first record to return, e.g. for paging
     if (options.start) {
-        options.path += '&start=' + options.start
+        qs.start = options.start
     }
 
     // number of results to retrieve
@@ -67,20 +71,20 @@ module.exports = function (options) {
     // EQUELLA's error message is clear
     if (len) {
         if (len > 50) len = 50 && console.error('The "length" parameter was reset to 50, the maximum.')
-        options.path += '&length=' + len
+        qs.length = len
     }
 
     // list of collections' UUIDs you want to search
     let coll = options.collections || options.coll || options.c
     if (coll) {
-        options.path += '&collections=' + coll
+        qs.collections = coll
     }
 
     // ordering principle of returned results
     let orderString = options.order || options.o
     if (orderString) {
         if (ORDER_OPTIONS.hasOwnProperty(orderString)) {
-            options.path += '&order=' + ORDER_OPTIONS[orderString]
+            qs.order = ORDER_OPTIONS[orderString]
         } else {
             // see handle-error fn for why syntax is like this
             return handle(null, {
@@ -98,7 +102,7 @@ Please choose one of: ${list(Object.keys(ORDER_OPTIONS), 'or')}.`
         if (where.indexOf('/xml') === -1) {
             where = where.charAt('/') !== '/' ? '/xml/' + where : '/xml' + where
         }
-        options.path += '&whereClause=' + encodeURIComponent(where)
+        qs.whereClause = encodeURIComponent(where)
     }
 
     // level & type of information results should have
@@ -106,7 +110,7 @@ Please choose one of: ${list(Object.keys(ORDER_OPTIONS), 'or')}.`
     let infos = infoString.split(',')
     if (infos.length) {
         if (infos.every(term => INFO_OPTIONS.hasOwnProperty(term))) {
-            options.path += '&info=' + infos.map(term => INFO_OPTIONS[term]).join(',')
+            qs.info = infos.map(term => INFO_OPTIONS[term]).join(',')
         } else {
             // see handle-error fn for why syntax is like this
             return handle(null, {
@@ -122,7 +126,7 @@ Please choose from: ${list(Object.keys(INFO_OPTIONS), 'and/or')}.`
     let statuses = statusString ? statusString.split(',') : []
     if (statuses.length) {
         if (statuses.every(status => STATUS_OPTIONS.hasOwnProperty(status) || STATUS_OPTIONS.hasOwnProperty(status.toLowerCase()))) {
-            options.path += '&status=' + statuses.map(status => STATUS_OPTIONS[status]).join(',')
+            qs.status = statuses.map(status => STATUS_OPTIONS[status]).join(',')
         } else {
             // see handle-error fn for why syntax is like this
             return handle(null, {
@@ -137,31 +141,31 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
     let modifiedAfter = options.modifiedAfter || options.ma
     let modifiedBefore = options.modifiedBefore || options.mb
     if (modifiedAfter) {
-        options.path += '&modifiedAfter=' + encodeURIComponent(modifiedAfter)
+        qs.modifiedAfter = encodeURIComponent(modifiedAfter)
     }
     if (modifiedBefore) {
-        options.path += '&modifiedBefore=' + encodeURIComponent(modifiedBefore)
+        qs.modifiedBefore = encodeURIComponent(modifiedBefore)
     }
 
     // owner (usually the user who created the item)
     let owner = options.owner
     if (owner) {
-        options.path += '&owner=' + encodeURIComponent(owner)
+        qs.owner = encodeURIComponent(owner)
     }
 
     let reverse = options.reverse || options.r
     if (reverse) {
-        options.path += '&reverseOrder=true'
+        qs.reverseOrder = true
     }
 
     // searchAttachments defaults to true
-    if (options.searchAttachments === 'false') {
-        options.path += '&searchAttachments=false'
+    if (options.searchAttachments && options.searchAttachments.toLowerCase() === 'false') {
+        qs.searchAttachments = false
     }
 
     // includeAttachments defaults to true
-    if (options.includeAttachments === 'false') {
-        options.path += '&includeAttachments=false'
+    if (options.includeAttachments && options.includeAttachments.toLowerCase() === 'false') {
+        qs.includeAttachments = false
     }
 
     // advancedSearch
@@ -169,7 +173,7 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
         // oE sends a helpful "no advanced search UUID matching..." error message
         // but we will also provide a bit of extra help
         if (!checkUUID(options.advancedSearch)) console.error('The --advancedSearch flag must be set to a valid power search UUID.\nTry `eq settings/advancedsearch` to see the full list.')
-        options.path += '&advancedSearch=' + encodeURIComponent(options.advancedSearch)
+        qs.advancedSearch = encodeURIComponent(options.advancedSearch)
     }
 
     // @TODO mimeTypes
@@ -178,7 +182,7 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
 
     // a Boolean indicating whether non-live resources are shown, default false
     if (!statusString && options.showall || options.all || options.show) {
-        options.path += '&showall=true'
+        qs.showall = true
     }
 
     return req(options)
