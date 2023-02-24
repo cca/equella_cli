@@ -179,6 +179,11 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
     // @TODO mimeTypes
 
     // @TODO musts
+    if (options.musts) {
+        // note: throws error "Provided 'musts' expression(s) was incorrectly formatted."
+        // if you try to use encodeURIComponent
+        qs.musts = options.musts.split(',').map(m => encodeURI(m))
+    }
 
     // a Boolean indicating whether non-live resources are shown, default false
     if (!statusString && options.showall || options.all || options.show) {
