@@ -3,10 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const open = require('open')
 const help = require('./lib/help')
-const defaults = {
-    method: 'get',
-    raw: true
-}
+const defaults = { method: 'get' }
 let options = require('rc')('equella', defaults)
 require('./lib/validate-options')(options)
 options.root = require('./lib/normalize-root')(options.root)
