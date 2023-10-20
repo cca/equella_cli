@@ -1,8 +1,9 @@
-var req = require('../lib/req')
-var findByName = require('../lib/find-by-name')
-// @todo implement browsehierarchy endpoint, see:
+import { req } from '../lib/req.js'
+import { findByName } from '../lib/find-by-name.js'
+
+// TODO implement browsehierarchy endpoint, see:
 // apidocs.do#!/hierarchy-browse
-module.exports = function (options) {
+export default function (options) {
     if (options.name) {
         return findByName(options)
     } else {

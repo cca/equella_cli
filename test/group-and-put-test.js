@@ -1,9 +1,10 @@
-/*jshint esversion: 8 */
 // test both group API endpoint and using HTTP PUT to modify a group
-// @NOTE: this test requires a test group with a UUID referenced inside
-// test/fixtures/original-group.json & test/fixtures/new-group.json
-const exec = require('child_process').exec
-const group = require('./fixtures/original-group.json')
+// ! this test requires a test group with a UUID referenced inside
+// ! test/fixtures/original-group.json & test/fixtures/new-group.json
+import {exec} from 'node:child_process'
+import { readFileSync } from 'node:fs'
+const group = JSON.parse(readFileSync('./fixtures/original-group.json'))
+
 const handleErr = (e) => { if (e) console.error(e) }
 
 exports["test `eq group $UUID` usage"] = (test) => {

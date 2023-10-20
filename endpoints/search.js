@@ -1,6 +1,6 @@
-const list = require('../lib/list')
-const req = require('../lib/req')
-const handle = require('../lib/handle-error')
+import { list } from '../lib/list.js'
+import { req } from '../lib/req.js'
+import * as handle from '../lib/handle-error.js'
 
 // order translation hash, allow some shortcuts
 const ORDER_OPTIONS = {
@@ -47,7 +47,7 @@ const STATUS_OPTIONS = {
     suspended: 'SUSPENDED',
 }
 
-module.exports = function (options) {
+export default function (options) {
     // initialize as we'll use this repeatedly below
     options.path = options.path || '?'
 
@@ -132,7 +132,8 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
         }
     }
 
-    // last modified dates @TODO enforce ISO-8601 dates?
+    // last modified dates
+    // TODO enforce ISO - 8601 dates ?
     let modifiedAfter = options.modifiedAfter || options.ma
     let modifiedBefore = options.modifiedBefore || options.mb
     if (modifiedAfter) {

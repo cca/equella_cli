@@ -1,9 +1,11 @@
-/*jshint esversion: 8 */
-const util = require('util')
-const exec = util.promisify(require('child_process').exec)
-const testTaxo = require('./fixtures/taxonomy.json')
-let testTerm1 = require('./fixtures/test-term1.json')
-let testTerm2 = require('./fixtures/test-term2.json')
+import { promisify } from 'node:util'
+import { exec as e } from 'node:child_process'
+const exec = promisify(e)
+import { readFileSync } from 'node:fs'
+const testTaxo =  JSON.parse(readFileSync('./fixtures/taxonomy.json'))
+const testTerm1 =  JSON.parse(readFileSync('./fixtures/test-term1.json'))
+const testTerm2 =  JSON.parse(readFileSync('./fixtures/test-term2.json'))
+
 const err = (e) => { if (e) console.error(e) }
 
 // global test taxonomy UUID shared by tests
@@ -142,7 +144,7 @@ async function deleteTestTaxo(cb) {
     cb()
 }
 
-module.exports = {
+export {
     setUp: createTestTaxo,
     "find a taxonomy by its name using --name": testFindByName,
     "find a taxonomy by its UUID": testFindByUUID,

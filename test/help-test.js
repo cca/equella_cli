@@ -1,4 +1,5 @@
-const exec = require('child_process').exec
+import {exec} from 'node:child_process'
+
 const handleErr = (e) => { if (e) console.error(e) }
 
 exports["argument usage like `eq help $ENDPOINT` works"] = (test) => {

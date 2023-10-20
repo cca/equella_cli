@@ -1,4 +1,4 @@
-const list = require('../lib/list')
+import {list} from '../lib/list.js'
 
 exports['Handle single-item lists'] = (test) => {
     test.strictEqual(list(['one']), 'one')

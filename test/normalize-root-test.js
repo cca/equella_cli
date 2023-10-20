@@ -1,4 +1,4 @@
-var nr = require('../lib/normalize-root')
+import {default as nr} from '../lib/normalize-root.js'
 
 exports['Returns a string'] = function (test) {
     test.strictEqual(typeof nr('example.com/api/'), 'string')

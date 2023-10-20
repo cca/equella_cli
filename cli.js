@@ -1,19 +1,23 @@
 #!/usr/bin/env node
-const fs = require('fs')
-const path = require('path')
-const open = require('open')
-const help = require('./lib/help')
-const defaults = { method: 'get' }
-let options = require('rc')('equella', defaults)
-require('./lib/validate-options')(options)
-options.root = require('./lib/normalize-root')(options.root)
+import readFileSync from 'node:fs'
+import resolve from 'node:path'
+import open from 'open'
+import rc from 'rc'
+import help from './lib/help.js'
+import validate from './lib/validate-options.js'
+import normalize from './lib/normalize-root.js'
+
+let options = rc('equella', { method: 'get' })
+validate(options)
+options.root = normalize(options.root)
 
 // these options will only apply on command line
 // so no need to represent elsewhere e.g. in index.js
 
 // help documentation must go first
 if (options._[0] === 'help' || options.help || options.h || !options._.length) {
-    return help(options)
+    help(options)
+    process.exit(0)
 // API documentation
 } else if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0] === 'docs') {
     const url = options.root + 'apidocs.do'
@@ -28,7 +32,7 @@ if (options._[0] === 'help' || options.help || options.h || !options._.length) {
     process.exit(0)
 // version number
 } else if (options._[0] === 'version') {
-    const data = fs.readFileSync(path.resolve(__dirname, 'package.json'))
+    const data = readFileSync(resolve(__dirname, 'package.json'))
     const pkg = JSON.parse(data)
     console.log(pkg.version)
     process.exit(0)
@@ -54,4 +58,5 @@ if (options._[0] === 'help' || options.help || options.h || !options._.length) {
 
 // we're headed to an API route so modify the URL
 options.root += 'api/'
-require('./index')(options)
+import {eq} from './index.js'
+eq(options)

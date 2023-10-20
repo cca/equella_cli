@@ -1,10 +1,10 @@
-var req = require('../lib/req')
-var handle = require('../lib/handle-error')
+import {req} from'../lib/req.js'
+import {handle} from'../lib/handle-error.js'
 
-module.exports = function (options) {
+export default function (options) {
     var query = options.name || options.q
 
-    // @todo can't use findByName b/c user objects have "username" property & not "name"
+    // TODO can't use findByName b/c user objects have "username" property & not "name"
     // could refactor findByName to be flexible in this circumstance
     if (query) {
         options.path = '?q=' + query
@@ -16,7 +16,7 @@ module.exports = function (options) {
             }
 
             // only print 1st result
-            // @todo: if 2 users begin with the same stem will this cause problems?
+            // TODO if 2 users begin with the same stem will this cause problems?
             // e.g. q = eric => data.results = [{eric2}, {eric}]
             return console.log(JSON.stringify(data.results[0], null, 2))
         })

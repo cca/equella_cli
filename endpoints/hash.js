@@ -1,4 +1,4 @@
-module.exports = {
+export const endpoints = {
     acc: 'settings',
     access: 'settings',
     browse: 'browsehierarchy/',

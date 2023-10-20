@@ -1,6 +1,6 @@
-var open = require('open')
+import { open } from 'open'
 
-module.exports = function (options) {
+export default function (options) {
     var dest = options._[1]
     var root = options.root.replace(/api\/$/, 'access/')
     var urls = {

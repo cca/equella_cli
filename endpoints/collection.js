@@ -1,7 +1,7 @@
-const req = require('../lib/req')
-const findByName = require('../lib/find-by-name')
+import { req } from '../lib/req.js'
+import { findByName } from '../lib/find-by-name.js'
 
-module.exports = function (options) {
+export default function (options) {
     if (options.name) {
         return findByName(options)
     }

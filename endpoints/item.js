@@ -1,10 +1,9 @@
-const req = require('../lib/req')
-const xpath = require('xpath')
-const Dom = require('@xmldom/xmldom').DOMParser
-// @todo more to implement in item endpoint, see:
-// apidocs.do#!/item
+import { req } from '../lib/req.js'
+import { xpath } from 'xpath'
+import { DOMParser } from '@xmldom/xmldom'
+// TODO more to implement in item endpoint, see: apidocs.do#!/item
 
-module.exports = function (options) {
+export default function (options) {
     // xpath expression, if present
     let xp = options.x || options.xp
 
@@ -15,7 +14,7 @@ module.exports = function (options) {
             let item = Array.isArray(data) ? data[0] : data
             // EQUELLA item XML, excluding system-generated stuff under /xml/item,
             // is all contained in the "metadata" property
-            let xml = new Dom().parseFromString(item.metadata)
+            let xml = new DOMParser().parseFromString(item.metadata)
             console.log(xpath.select(xp, xml).toString())
         })
     } else {

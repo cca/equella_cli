@@ -1,4 +1,4 @@
-const s2 = require('../endpoints/search2.js')
+import {default as s2} from '../endpoints/search2.js'
 
 const defaults = {
     // short length & no attachments to speed up response times
@@ -12,7 +12,7 @@ const defaults = {
 const testCollection = 'e1722640-f782-4a53-b20d-cda384f1aa22' // Test Collection
 const testAdvancedSearch = '9f4a3509-8c49-6db9-de96-bb168bf80752' // Libraries advanced search
 // options template which each test will modify to its needs
-const opts = require('rc')('equella', defaults)
+const opts from'rc')('equella', defaults)
 
 // tests a few standard things we expect from every search API response
 function testSuccessfulSearch(test, err, resp, data) {

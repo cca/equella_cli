@@ -1,14 +1,15 @@
-/*jshint esversion: 8 */
-// @NOTE: this test requires a test collection with a UUID referenced inside
-// test/fixtures/test-item.json
-const util = require('util')
-const exec = util.promisify(require('child_process').exec)
-const xpath = require('xpath')
-const Dom = require('@xmldom/xmldom').DOMParser
-const testData = require('./fixtures/test-item.json')
+// ! this test requires a test collection with a UUID referenced inside
+// ! test/fixtures/test-item.json
+import { promisify } from 'node:util'
+import {exec as e} from 'node:child_process'
+const exec = promisify(e)
+import {xpath} from 'xpath'
+import { DOMParser } from '@xmldom/xmldom'
+import { readFileSync } from 'node:fs'
+const testData =  JSON.parse(readFileSync('./fixtures/test-item.json'))
 const err = (e) => { if (e) console.error(e) }
 
-const doc = new Dom().parseFromString(testData.metadata)
+const doc = new DOMParser().parseFromString(testData.metadata)
 let itemID;
 
 async function createTestItem(cb) {
@@ -46,7 +47,7 @@ async function deleteTestItem(cb) {
     cb()
 }
 
-module.exports = {
+export {
     setUp: createTestItem,
     group: {
         "retrieve XML element from XPath": testXpath,

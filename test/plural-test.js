@@ -1,4 +1,4 @@
-var pl = require('../lib/plural')
+import {default as pl} from '../lib/plural.js'
 
 exports['Pluralize words ending with a Y'] = function (test) {
     test.strictEqual('taxonomies', pl('taxonomy'))

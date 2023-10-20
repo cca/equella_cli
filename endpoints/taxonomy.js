@@ -1,5 +1,6 @@
-const req = require('../lib/req')
-const findByName = require('../lib/find-by-name')
+import { req } from'../lib/req.js'
+import { findByName } from '../lib/find-by-name.js'
+
 const makeSearchOptions = function (query, opts) {
     let restriction = opts.restriction || opts.restrict || 'UNRESTRICTED'
 
@@ -27,7 +28,7 @@ route to a single object i.e. {root}/taxonomy/{UUID}/{path} while append is only
 used if we first look up an object by its name, then after we find it append
 becomes the path.
 */
-module.exports = function (options) {
+export default function (options) {
     let search = (options.search || options.s || options.serach)
     options.append = options.append || ''
     if (options.method == 'get') options.path = options.path || ''

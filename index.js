@@ -1,8 +1,8 @@
-var req = require('./lib/req')
-var endpoints = require('./endpoints/hash')
+import { req } from './lib/req.js'
+import { endpoints } from './endpoints/hash.js'
 
 // main exported module
-var eq = function (options) {
+export const eq = function(options) {
     // do we have an endpoint shortcut for the first arg?
     if (endpoints[options._[0]] !== undefined) {
         options.endpoint = endpoints[options._[0]]
@@ -59,5 +59,3 @@ var eq = function (options) {
             req(options)
     }
 }
-
-module.exports = eq

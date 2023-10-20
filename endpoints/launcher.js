@@ -2,17 +2,15 @@
 // requires having an admin console package downloaded and added to your
 // .equellarc's "launcherPath" property
 // see https://openequella.github.io/guides/AdministrationConsole/openEQUELLA2019.1-AdministrationConsolePackageGuide.html
-// @TODO launcher was introduced in 2019.1, it'd be nice to throw an error if
-// you hit this endpoint on an earlier version
 // https://github.com/openequella/openEQUELLA/releases/tag/2019.1-Stable
-const fs = require('fs')
-const spawn = require('child_process').spawn
-const clipboardy = require('clipboardy')
+import { access } from 'node:fs'
+import { spawn } from 'node:child_process'
+import { clipboardy } from 'clipboardy'
 
-module.exports = function (options) {
+export default function (options) {
     if (options.launcherPath) {
         // test if path exists and is executable for us
-        fs.access(options.launcherPath, fs.constants.X_OK, (err) => {
+        access(options.launcherPath, fs.constants.X_OK, (err) => {
             if (err) {
                 console.error(`Error: path to admin console launcher must exist and be executable for the current user.`)
                 if (options.debug) console.error(`${err}`)

@@ -1,7 +1,7 @@
-const list = require('../lib/list')
-const req = require('../lib/req')
-const handle = require('../lib/handle-error')
-const checkUUID = require('../lib/checkUUID')
+import { list } from '../lib/list.js'
+import { req } from '../lib/req.js'
+import { handle } from '../lib/handle-error.js'
+import { checkUUID } from '../lib/checkUUID.js'
 
 // order translation hash, allow some shortcuts
 const ORDER_OPTIONS = {
@@ -48,7 +48,7 @@ const STATUS_OPTIONS = {
     suspended: 'SUSPENDED',
 }
 
-module.exports = function (options, cb) {
+export default function (options, cb) {
     // CSV export, this has special handling in lib/req.js to set the Accept header
     if (options.e || options.export) {
         options.path = 'export'
@@ -137,7 +137,8 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
         }
     }
 
-    // last modified dates @TODO enforce ISO-8601 dates?
+    // last modified dates
+    // TODO enforce ISO - 8601 dates ?
     let modifiedAfter = options.modifiedAfter || options.ma
     let modifiedBefore = options.modifiedBefore || options.mb
     if (modifiedAfter) {
