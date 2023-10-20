@@ -1,4 +1,4 @@
-import { open } from 'open'
+import open from 'open'
 
 export default function (options) {
     var dest = options._[1]

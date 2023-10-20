@@ -1,5 +1,16 @@
 import { req } from './lib/req.js'
 import { endpoints } from './endpoints/hash.js'
+import browsehierarchy from './endpoints/browsehierarchy.js'
+import collection from './endpoints/collection.js'
+import item from './endpoints/item.js'
+import launcher from './endpoints/launcher.js'
+import search from './endpoints/search.js'
+import search2 from './endpoints/search2.js'
+import settings from './endpoints/settings.js'
+import taxonomy from './endpoints/taxonomy.js'
+import group from './endpoints/group.js'
+import role from './endpoints/role.js'
+import user from './endpoints/user.js'
 
 // main exported module
 export const eq = function(options) {
@@ -22,37 +33,37 @@ export const eq = function(options) {
 
     switch (options.endpoint) {
         case 'browsehierarchy/':
-            require('./endpoints/browsehierarchy')(options)
+            browsehierarchy(options)
             break
         case 'collection/':
-            require('./endpoints/collection')(options)
+            collection(options)
             break
         case 'item/':
-            require('./endpoints/item')(options)
+            item(options)
             break
         case 'launcher':
-            require('./endpoints/launcher')(options)
+            launcher(options)
             break
         case 'search/':
-            require('./endpoints/search')(options)
+            search(options)
             break
         case 'search2/':
-            require('./endpoints/search2')(options)
+            search2(options)
             break
         case 'settings':
-            require('./endpoints/settings')(options)
+            settings(options)
             break
         case 'taxonomy/':
-            require('./endpoints/taxonomy')(options)
+            taxonomy(options)
             break
         case 'usermanagement/local/group/':
-            require('./endpoints/group')(options)
+            group(options)
             break
         case 'usermanagement/local/role/':
-            require('./endpoints/role')(options)
+            role(options)
             break
         case 'usermanagement/local/user/':
-            require('./endpoints/user')(options)
+            user(options)
             break
         // fall back to raw URL mode
         default:

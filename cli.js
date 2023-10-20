@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import readFileSync from 'node:fs'
-import resolve from 'node:path'
+import { readFileSync } from 'node:fs'
 import open from 'open'
 import rc from 'rc'
 import help from './lib/help.js'
@@ -32,11 +31,11 @@ if (options._[0] === 'help' || options.help || options.h || !options._.length) {
     process.exit(0)
 // version number
 } else if (options._[0] === 'version') {
-    const data = readFileSync(resolve(__dirname, 'package.json'))
-    const pkg = JSON.parse(data)
-    console.log(pkg.version)
+    const pjpath = new URL('./package.json', import.meta.url)
+    const app = JSON.parse(readFileSync(pjpath))
+    console.log(app.version)
     process.exit(0)
-    // login via browser automatically
+// login via browser automatically
 } else if (options.login || options._[0] === 'login') {
     if (!options.username || !options.password) {
         console.error('Error! Login command requires a username & password in .equellarc or passed on the command line.')

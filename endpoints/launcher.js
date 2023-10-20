@@ -3,14 +3,14 @@
 // .equellarc's "launcherPath" property
 // see https://openequella.github.io/guides/AdministrationConsole/openEQUELLA2019.1-AdministrationConsolePackageGuide.html
 // https://github.com/openequella/openEQUELLA/releases/tag/2019.1-Stable
-import { access } from 'node:fs'
+import { access, constants } from 'node:fs'
 import { spawn } from 'node:child_process'
-import { clipboardy } from 'clipboardy'
+import clipboardy from 'clipboardy'
 
 export default function (options) {
     if (options.launcherPath) {
         // test if path exists and is executable for us
-        access(options.launcherPath, fs.constants.X_OK, (err) => {
+        access(options.launcherPath, constants.X_OK, (err) => {
             if (err) {
                 console.error(`Error: path to admin console launcher must exist and be executable for the current user.`)
                 if (options.debug) console.error(`${err}`)

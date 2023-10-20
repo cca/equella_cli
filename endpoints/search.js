@@ -1,6 +1,6 @@
 import { list } from '../lib/list.js'
 import { req } from '../lib/req.js'
-import * as handle from '../lib/handle-error.js'
+import { handle } from '../lib/handle-error.js'
 
 // order translation hash, allow some shortcuts
 const ORDER_OPTIONS = {

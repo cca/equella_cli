@@ -1,5 +1,7 @@
 import { req } from '../lib/req.js'
-import { xpath } from 'xpath'
+// xpath is commonjs
+import * as xp from 'xpath'
+const { xpath } = xp
 import { DOMParser } from '@xmldom/xmldom'
 // TODO more to implement in item endpoint, see: apidocs.do#!/item
 
