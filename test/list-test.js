@@ -1,4 +1,5 @@
-import {list} from '../lib/list.js'
+import assert from 'node:assert'
+import { list } from '../lib/list.js'
 
 exports['Handle single-item lists'] = (test) => {
     test.strictEqual(list(['one']), 'one')

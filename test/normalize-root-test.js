@@ -1,4 +1,5 @@
-import {default as nr} from '../lib/normalize-root.js'
+import assert from 'node:assert'
+import { default as nr } from '../lib/normalize-root.js'
 
 exports['Returns a string'] = function (test) {
     test.strictEqual(typeof nr('example.com/api/'), 'string')

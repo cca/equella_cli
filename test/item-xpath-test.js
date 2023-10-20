@@ -1,9 +1,11 @@
 // ! this test requires a test collection with a UUID referenced inside
 // ! test/fixtures/test-item.json
+import assert from 'node:assert'
 import { promisify } from 'node:util'
-import {exec as e} from 'node:child_process'
+import { exec as e } from 'node:child_process'
 const exec = promisify(e)
-import {xpath} from 'xpath'
+import { xp } from 'xpath'
+const { xpath } = xp
 import { DOMParser } from '@xmldom/xmldom'
 import { readFileSync } from 'node:fs'
 const testData =  JSON.parse(readFileSync('./fixtures/test-item.json'))

@@ -1,4 +1,5 @@
-import {default as s2} from '../endpoints/search2.js'
+import assert from 'node:assert'
+import { default as s2 } from '../endpoints/search2.js'
 
 const defaults = {
     // short length & no attachments to speed up response times

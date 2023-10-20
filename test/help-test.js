@@ -1,4 +1,5 @@
-import {exec} from 'node:child_process'
+import assert from 'node:assert'
+import { exec } from 'node:child_process'
 
 const handleErr = (e) => { if (e) console.error(e) }
 

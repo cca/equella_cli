@@ -1,8 +1,10 @@
+import assert from 'node:assert'
 import { promisify } from 'node:util'
 import { exec as e } from 'node:child_process'
 const exec = promisify(e)
 import { readFileSync } from 'node:fs'
-const testTaxo =  JSON.parse(readFileSync('./fixtures/taxonomy.json'))
+
+const testTaxo = JSON.parse(readFileSync('./fixtures/taxonomy.json'))
 const testTerm1 =  JSON.parse(readFileSync('./fixtures/test-term1.json'))
 const testTerm2 =  JSON.parse(readFileSync('./fixtures/test-term2.json'))
 

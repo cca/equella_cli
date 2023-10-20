@@ -1,7 +1,8 @@
 // test both group API endpoint and using HTTP PUT to modify a group
 // ! this test requires a test group with a UUID referenced inside
 // ! test/fixtures/original-group.json & test/fixtures/new-group.json
-import {exec} from 'node:child_process'
+import assert from 'node:assert'
+import { exec } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 const group = JSON.parse(readFileSync('./fixtures/original-group.json'))
 

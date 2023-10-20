@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/cca/equella_cli#readme",
   "scripts": {
-    "test": "nodeunit test"
+    "test": "mocha test"
   },
   "author": "phette23 <phette23@gmail.com> (http://phette.net)",
   "keywords": [
@@ -32,10 +32,10 @@
     "open": "^9.1.0",
     "rc": "^1.2.8",
     "request": "^2.88.2",
-    "xpath": "^0.0.32"
+    "xpath": "^0.0.33"
   },
   "devDependencies": {
-    "nodeunit": "^0.11.3"
+    "mocha": "^10.2.0"
   },
   "engines": {
     "node": ">=0.8"
