@@ -3,38 +3,40 @@ import { exec } from 'node:child_process'
 
 const handleErr = (e) => { if (e) console.error(e) }
 
-exports["argument usage like `eq help $ENDPOINT` works"] = (test) => {
-    exec('eq help taxo', (err, stdout, stderr) => {
-        handleErr(stderr)
-        test.ok(stdout.toString().length > 0)
-        test.ok(!err)
-        test.done()
+describe("eq help", () => {
+    it("argument usage like `eq help $ENDPOINT` works", (done) => {
+        exec('eq help taxo', (err, stdout, stderr) => {
+            handleErr(stderr)
+            assert.ok(stdout.toString().length > 0)
+            assert.ok(!err)
+            done()
+        })
     })
-}
 
-exports["flag usage like `eq $ENDPOINT --help` works"] = (test) => {
-    exec('eq search --help', (err, stdout, stderr) => {
-        handleErr(stderr)
-        test.ok(stdout.toString().length > 0)
-        test.ok(!err)
-        test.done()
+    it("flag usage like `eq $ENDPOINT --help` works", (done) => {
+        exec('eq search --help', (err, stdout, stderr) => {
+            handleErr(stderr)
+            assert.ok(stdout.toString().length > 0)
+            assert.ok(!err)
+            done()
+        })
     })
-}
 
-exports["general `eq help` works"] = (test) => {
-    exec('eq help', (err, stdout, stderr) => {
-        handleErr(stderr)
-        test.ok(stdout.toString().length > 0)
-        test.ok(!err)
-        test.done()
+    it("general `eq help` works", (done) => {
+        exec('eq help', (err, stdout, stderr) => {
+            handleErr(stderr)
+            assert.ok(stdout.toString().length > 0)
+            assert.ok(!err)
+            done()
+        })
     })
-}
 
-exports["`eq` with no other args prints help"] = (test) => {
-    exec('eq', (err, stdout, stderr) => {
-        handleErr(stderr)
-        test.ok(stdout.toString().length > 0)
-        test.ok(!err)
-        test.done()
+    it("`eq` with no other args prints help", (done) => {
+        exec('eq', (err, stdout, stderr) => {
+            handleErr(stderr)
+            assert.ok(stdout.toString().length > 0)
+            assert.ok(!err)
+            done()
+        })
     })
-}
+})

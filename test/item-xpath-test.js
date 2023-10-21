@@ -8,8 +8,8 @@ import { xp } from 'xpath'
 const { xpath } = xp
 import { DOMParser } from '@xmldom/xmldom'
 import { readFileSync } from 'node:fs'
-const testData =  JSON.parse(readFileSync('./fixtures/test-item.json'))
-const err = (e) => { if (e) console.error(e) }
+const testData =  JSON.parse(readFileSync('./test/fixturestest-item.json'))
+const err = (e) => { if (e) console.error(e) )
 
 const doc = new DOMParser().parseFromString(testData.metadata)
 let itemID;
@@ -22,7 +22,7 @@ async function createTestItem(cb) {
     itemID = stdout.split('api/item/')[1]
     console.log(`Created test item ${stdout}`)
     cb()
-}
+)
 
 async function testXpath(test) {
     const xp = '/xml/mods/titleInfo/title'
@@ -31,7 +31,7 @@ async function testXpath(test) {
     // returned XML data should be present in fixture metadata
     test.equals(stdout, xpath.select(xp, doc).toString() + '\n')
     test.done()
-}
+)
 
 async function testXpathText(test) {
     const xp = '/xml/mods/titleInfo/subTitle'
@@ -40,14 +40,14 @@ async function testXpathText(test) {
     // only text (no XML tags)
     test.equals(stdout, xpath.select(`${xp}/text()`, doc).toString() + '\n')
     test.done()
-}
+)
 
 async function deleteTestItem(cb) {
     const { stdout, stderr } = await exec(`eq item --method delete ${itemID}`)
     err(stderr)
     console.log(`Deleted test item ${itemID}`)
     cb()
-}
+)
 
 export {
     setUp: createTestItem,
@@ -56,4 +56,4 @@ export {
         "retrieve text of element from XPath": testXpathText
     },
     tearDown: deleteTestItem
-}
+)

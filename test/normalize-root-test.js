@@ -1,20 +1,22 @@
 import assert from 'node:assert'
 import { default as nr } from '../lib/normalize-root.js'
 
-exports['Returns a string'] = function (test) {
-    test.strictEqual(typeof nr('example.com/api/'), 'string')
-    test.strictEqual(typeof nr('example.com/api'), 'string')
-    test.strictEqual(typeof nr('example.com'), 'string')
-    test.done()
-}
+describe("normalize root", () => {
+    it('Returns a string', (done) => {
+        assert.strictEqual(typeof nr('example.com/api/'), 'string')
+        assert.strictEqual(typeof nr('example.com/api'), 'string')
+        assert.strictEqual(typeof nr('example.com'), 'string')
+        done()
+    })
 
-exports['Removes /api/? if present'] = function (test) {
-    test.strictEqual('example.com/', nr('example.com/api/'))
-    test.strictEqual('example.com/', nr('example.com/api'))
-    test.done()
-}
+    it('Removes /api if present', (done) => {
+        assert.strictEqual('example.com/', nr('example.com/api/'))
+        assert.strictEqual('example.com/', nr('example.com/api'))
+        done()
+    })
 
-exports['Adds trailing slash to domain if missing'] = function (test) {
-    test.strictEqual('example.com/', nr('example.com'))
-    test.done()
-}
+    it('Adds trailing slash to domain if missing', (done) => {
+        assert.strictEqual('example.com/', nr('example.com'))
+        done()
+    })
+})

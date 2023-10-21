@@ -4,11 +4,11 @@ import { exec as e } from 'node:child_process'
 const exec = promisify(e)
 import { readFileSync } from 'node:fs'
 
-const testTaxo = JSON.parse(readFileSync('./fixtures/taxonomy.json'))
-const testTerm1 =  JSON.parse(readFileSync('./fixtures/test-term1.json'))
-const testTerm2 =  JSON.parse(readFileSync('./fixtures/test-term2.json'))
+const testTaxo = JSON.parse(readFileSync('./test/fixturestaxonomy.json'))
+const testTerm1 =  JSON.parse(readFileSync('./test/fixturestest-term1.json'))
+const testTerm2 =  JSON.parse(readFileSync('./test/fixturestest-term2.json'))
 
-const err = (e) => { if (e) console.error(e) }
+const err = (e) => { if (e) console.error(e) )
 
 // global test taxonomy UUID shared by tests
 let taxoID
@@ -20,7 +20,7 @@ async function createTestTaxo(cb) {
     const { stdout, stderr } = await exec('eq taxo --method post --file test/fixtures/taxonomy.json')
     err(stderr)
     // eq returns the taxonomy's API URL upon successful creation, it looks like
-    // {config.root}/api/taxonomy/{uuid}
+    // {config.root}/api/taxonomy/{uuid)
     taxoID = stdout.split('api/taxonomy/')[1].trim()
     console.log(`Created test taxonomy "${testTaxo.name}"\n${stdout}`)
 
@@ -37,7 +37,7 @@ async function createFirstTerm(taxo) {
     console.log(`Created taxonomy term "${testTerm1.term}"`)
 
     return stdout.split('/term')[1].trim()
-}
+)
 
 async function createSecondTerm(taxo) {
     const { stdout, stderr } = await exec(`eq taxo ${taxo}/term --method post --file test/fixtures/test-term2.json`)
@@ -45,7 +45,7 @@ async function createSecondTerm(taxo) {
     console.log(`Created taxonomy term "${testTerm2.term}"`)
 
     return stdout.split('/term')[1].trim()
-}
+)
 
 // doesn't work because PUT/POST requests are required to send data in a file
 // async function addDataToSecondTerm(taxo, term) {
@@ -55,7 +55,7 @@ async function createSecondTerm(taxo) {
 //     console.log(`Created taxonomy term "${testTerm2.term}"`)
 //
 //     return stdout
-// }
+// )
 
 async function testFindByName(test) {
     const { stdout, stderr } = await exec(`eq taxo --name "${testTaxo.name}"`)
@@ -64,11 +64,11 @@ async function testFindByName(test) {
     test.equals(results.name, testTaxo.name)
     test.equals(results.dataSource, testTaxo.dataSource)
     test.equals(results.readonly, testTaxo.readonly)
-    test.ok(results.uuid)
+    assert.ok(results.uuid)
 
     testsRun++
     test.done()
-}
+)
 
 async function testFindByUUID(test) {
     const { stdout, stderr } = await exec(`eq taxo ${taxoID}`)
@@ -77,11 +77,11 @@ async function testFindByUUID(test) {
     test.equals(results.name, testTaxo.name)
     test.equals(results.dataSource, testTaxo.dataSource)
     test.equals(results.readonly, testTaxo.readonly)
-    test.ok(results.uuid)
+    assert.ok(results.uuid)
 
     testsRun++
     test.done()
-}
+)
 
 async function testGetTerms(test) {
     const { stdout, stderr } = await exec(`eq taxo ${taxoID} --terms`)
@@ -93,7 +93,7 @@ async function testGetTerms(test) {
 
     testsRun++
     test.done()
-}
+)
 
 // find a specific term by its path
 // can't test this yet because how api/taxonomy/$UUID/term?path=PATH actually works
@@ -102,17 +102,17 @@ async function testGetTerms(test) {
 //     const { stdout, stderr } = await exec(`eq taxo ${taxoID} --term "${testTerm1.term}"`)
 //     err(stderr)
 //     const results = JSON.parse(stdout)
-//     test.ok(results)
+//     assert.ok(results)
 //     test.equals(results.term, testTerm1.term)
 //     test.done()
-// }
+// )
 
 // once we have data added to a term we can test here
 // async function testGetTermData(test) {
 //
 //     testsRun++
 //     test.done()
-// }
+// )
 
 async function testSearch(test) {
     const { stdout, stderr } = await exec(`eq taxo ${taxoID} --search "${testTerm1.term}"`)
@@ -123,7 +123,7 @@ async function testSearch(test) {
 
     testsRun++
     test.done()
-}
+)
 
 async function testSearchWithName(test) {
     // ensure --search works with --name
@@ -136,7 +136,7 @@ async function testSearchWithName(test) {
 
     testsRun++
     test.done()
-}
+)
 
 async function deleteTestTaxo(cb) {
     if (testsExpected != testsRun) return cb()
@@ -144,7 +144,7 @@ async function deleteTestTaxo(cb) {
     err(stderr)
     console.log(`Deleted test taxonomy ${taxoID}`)
     cb()
-}
+)
 
 export {
     setUp: createTestTaxo,
@@ -154,4 +154,4 @@ export {
     "search a taxonomy for terms": testSearch,
     "search a taxonomy for terms using --name": testSearch,
     tearDown: deleteTestTaxo,
-}
+)

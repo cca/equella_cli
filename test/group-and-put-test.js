@@ -4,44 +4,47 @@
 import assert from 'node:assert'
 import { exec } from 'node:child_process'
 import { readFileSync } from 'node:fs'
-const group = JSON.parse(readFileSync('./fixtures/original-group.json'))
+const group = JSON.parse(readFileSync('./test/fixtures/original-group.json'))
 
 const handleErr = (e) => { if (e) console.error(e) }
 
-exports["test `eq group $UUID` usage"] = (test) => {
-    exec(`eq group ${group.id}`, (err, stdout, stderr) => {
-        handleErr(stderr)
-        test.ok(stdout.toString())
-        test.ok(!err)
-        let data = JSON.parse(stdout.toString())
-        test.ok(data.users.includes('stest'))
-        test.ok(!data.users.includes('ftest1'))
-        test.done()
-    })
-}
-
-exports["test modifying group with PUT request & retrieving with --name flag"] = (test) => {
-    exec(`eq group ${group.id} --method put --data test/fixtures/new-group.json`, (err, stdout, stderr) => {
-        // fixtures/new-group.json removes stest1 and adds ftest1
-        handleErr(stderr)
-        test.ok(!err)
-        // @NOTE: oE API returns nothing in the body of a successful PUT/POST
-        // request, so stdout.toString() is not informative
-        exec(`eq group --name "${group.name}"`, (err, stdout, stderr) => {
+describe("eq group", () => {
+    it('should get group information', (done) => {
+        exec(`eq group ${group.id}`, (err, stdout, stderr) => {
             handleErr(stderr)
-            test.ok(!err)
+            assert.ok(stdout.toString())
+            assert.ok(!err)
             let data = JSON.parse(stdout.toString())
-            test.ok(data.users.includes('ftest1'))
-            test.ok(!data.users.includes('stest1'))
-            test.done()
+            assert.ok(data.users.includes('stest'))
+            assert.ok(!data.users.includes('ftest1'))
+            done()
         })
-    })
-}
+    }).timeout(5000)
 
-exports["revert group to original state using PUT with --file flag"] = (test) => {
-    exec(`eq group ${group.id} --method put --file test/fixtures/original-group.json`, (err, stdout, stderr) => {
-        handleErr(stderr)
-        test.ok(!err)
-        test.done()
-    })
-}
+    it('should modify group with a PUT request & retrieving it with --name flag', (done) => {
+        exec(`eq group ${group.id} --method put --data test/fixtures/new-group.json`, (err, stdout, stderr) => {
+            // fixtures/new-group.json removes stest1 and adds ftest1
+            handleErr(stderr)
+            assert.ok(!err)
+            // ! oE API returns nothing in the body of a successful PUT/POST
+            // ! request, so stdout.toString() is not informative
+            exec(`eq group --name "${group.name}"`, (err, stdout, stderr) => {
+                handleErr(stderr)
+                assert.ok(!err)
+                let data = JSON.parse(stdout.toString())
+                assert.ok(data.users.includes('ftest1'))
+                assert.ok(!data.users.includes('stest1'))
+                done()
+            })
+        })
+    }).timeout(5000)
+
+    it('should with a PUT using --file flag', (done) => {
+        // this reverts the change made above
+        exec(`eq group ${group.id} --method put --file test/fixtures/original-group.json`, (err, stdout, stderr) => {
+            handleErr(stderr)
+            assert.ok(!err)
+            done()
+        })
+    }).timeout(5000)
+})
