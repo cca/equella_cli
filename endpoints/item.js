@@ -1,7 +1,6 @@
 import { req } from '../lib/req.js'
 // xpath is commonjs
-import * as xp from 'xpath'
-const { xpath } = xp
+import { select } from 'xpath'
 import { DOMParser } from '@xmldom/xmldom'
 // TODO more to implement in item endpoint, see: apidocs.do#!/item
 
@@ -17,7 +16,7 @@ export default function (options) {
             // EQUELLA item XML, excluding system-generated stuff under /xml/item,
             // is all contained in the "metadata" property
             let xml = new DOMParser().parseFromString(item.metadata)
-            console.log(xpath.select(xp, xml).toString())
+            console.log(select(xp, xml).toString())
         })
     } else {
         return req(options)
