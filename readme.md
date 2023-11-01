@@ -69,6 +69,10 @@ The `--path` flag is also available for specifying a path that comes after the A
 
 See [the endpoints document](endpoints.md) for documentation on options and shortcuts related to specific API endpoints like taxonomy, groups, search, and items.
 
+## ESM
+
+Starting with version 2.0.0 `eq` is an ECMAScript module while the 1.x.y versions were CommonJS. This change should not affect `eq` command line usage. In general, importing the module as a library is not an anticipated use case and untested.
+
 ## Use `jq`
 
 `eq` is at its best in combination with a UNIX JSON utility like [jq](https://stedolan.github.io/jq/). By piping API results through `jq`, it's easier to extract the specific information we want as well as to iterate over results. For this reason, `eq` will not focus on tooling for extracting common fields from EQUELLA's JSON responses. Instead, we use `jq` in combination to achieve want we want, e.g.
