@@ -19,7 +19,7 @@ function createTestItem(cb) {
         // eq returns the item's API URL upon successful creation, it looks like
         // {config.root}/api/item/{uuid}/{version}/
         itemID = stdout.split('api/item/')[1]
-        console.log(`Created test item ${stdout}`)
+        console.log(`Created test item ${stdout.trim()}`)
         cb()
     })
 }
