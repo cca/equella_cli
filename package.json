@@ -28,7 +28,7 @@
   "license": "ECL-2.0",
   "dependencies": {
     "@xmldom/xmldom": "^0.8.10",
-    "clipboardy": "^3.0.0",
+    "clipboardy": "^4.0.0",
     "open": "^9.1.0",
     "rc": "^1.2.8",
     "request": "^2.88.2",
