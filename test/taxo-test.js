@@ -91,7 +91,7 @@ function testGetTerms(done) {
 function testSearch(done) {
     exec(`eq taxo ${taxoID} --search "${testTerm1.term}"`, (e, stdout, stderr) => {
         err(e, stderr)
-        let results = JSON.parse(stdout).results
+        const results = JSON.parse(stdout).results
         assert.equal(results.length, 1)
         assert.equal(results[0].term, testTerm1.term)
         done()
@@ -102,7 +102,7 @@ function testSearch(done) {
 function testSearchWithName(done) {
     exec(`eq taxo --name "${testTaxo.name}" --search "${testTerm2.term}"`, (e, stdout, stderr) => {
         err(e, stderr)
-        results = JSON.parse(stdout).results
+        const results = JSON.parse(stdout).results
         assert.equal(results.length, 1)
         assert.equal(results[0].term, testTerm2.term)
         done()
