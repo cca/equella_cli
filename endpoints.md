@@ -101,6 +101,8 @@ The `search2` endpoint has the same parameters as `search` above but with the ad
 Shortcuts: tax, taxo, taxonomy
 
 ```sh
+# print all taxonomies (unless you have more than 5k!)
+eq tax --length 5000
 # look up taxonomy by name instead of UUID
 eq tax --name 'Semesters'
 # get all the top-level terms

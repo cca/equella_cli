@@ -36,6 +36,17 @@ export default function (options) {
     // path, this abstracts over that
     let appendOrPath = options.name ? 'append' : 'path'
 
+    // doesn't seem to be a limit on taxo search results, unlike search
+    let length = options.length || options.l
+    if (length) {
+        length = parseInt(length)
+        if (isNaN(length)) {
+            console.error('Error: --length option must be an integer')
+            process.exit(1)
+        }
+        options.qs = new URLSearchParams({ 'length': length })
+    }
+
     if (search) {
         // putting search query string in append allows us to look up
         // the taxonomy by name first below
