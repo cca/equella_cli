@@ -130,5 +130,5 @@ Shortcuts: user, users
 
 ```sh
 # look up user by (case sensitive) name
-eq user --name 'xsun1' # -q also works
+eq user --name 'phette23' # -q also works
 ```

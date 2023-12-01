@@ -12,7 +12,8 @@ export default function (options) {
             handle(err, data)
 
             if (data.results.length === 0) {
-                return console.error('Unable to find', options.name, 'in list of users')
+                console.error(`Unable to find "${options.name}" in list of users`)
+                return process.exit(1)
             }
 
             // only print 1st result
