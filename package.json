@@ -32,10 +32,10 @@
     "open": "^9.1.0",
     "rc": "^1.2.8",
     "request": "^2.88.2",
-    "xpath": "^0.0.33"
+    "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "mocha": "^10.2.0"
+    "mocha": "^10.3.0"
   },
   "engines": {
     "node": ">=0.8"
