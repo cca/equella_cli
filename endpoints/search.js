@@ -78,7 +78,7 @@ export default function (options) {
     // ordering principle of returned results
     let orderString = options.order || options.o
     if (orderString) {
-        if (ORDER_OPTIONS.hasOwnProperty(orderString)) {
+        if (Object.hasOwn(ORDER_OPTIONS, orderString)) {
             options.path += '&order=' + ORDER_OPTIONS[orderString]
         } else {
             // see handle-error fn for why syntax is like this
@@ -104,7 +104,7 @@ Please choose one of: ${list(Object.keys(ORDER_OPTIONS), 'or')}.`
     let infoString = options.info || options.i || 'basic'
     let infos = infoString.split(',')
     if (infos.length) {
-        if (infos.every(term => INFO_OPTIONS.hasOwnProperty(term))) {
+        if (infos.every(term => Object.hasOwn(INFO_OPTIONS, term))) {
             options.path += '&info=' + infos.map(term => INFO_OPTIONS[term]).join(',')
         } else {
             // see handle-error fn for why syntax is like this
@@ -118,16 +118,15 @@ Please choose from: ${list(Object.keys(INFO_OPTIONS), 'and/or')}.`
 
     // item statuses filter
     let statusString = options.status || options.s || null
-    let statuses = statusString ? statusString.split(',') : []
+    let statuses = statusString ? statusString.toLowerCase().split(',') : []
     if (statuses.length) {
-        if (statuses.every(status => STATUS_OPTIONS.hasOwnProperty(status) || STATUS_OPTIONS.hasOwnProperty(status.toLowerCase()))) {
+        if (statuses.every(status => Object.hasOwn(STATUS_OPTIONS, status))) {
             options.path += '&status=' + statuses.map(status => STATUS_OPTIONS[status]).join(',')
         } else {
             // see handle-error fn for why syntax is like this
             return handle(null, {
                 'error': true,
-                'error_description': `Unrecognized "status" value: ${statusString}
-Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
+                'error_description': `Unrecognized "status" value: ${statusString}\nPlease choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
             })
         }
     }
