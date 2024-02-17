@@ -32,41 +32,41 @@ export const eq = function(options) {
     }
 
     switch (options.endpoint) {
-        case 'browsehierarchy/':
-            browsehierarchy(options)
-            break
-        case 'collection/':
-            collection(options)
-            break
-        case 'item/':
-            item(options)
-            break
-        case 'launcher':
-            launcher(options)
-            break
-        case 'search/':
-            search(options)
-            break
-        case 'search2/':
-            search2(options)
-            break
-        case 'settings':
-            settings(options)
-            break
-        case 'taxonomy/':
-            taxonomy(options)
-            break
-        case 'usermanagement/local/group/':
-            group(options)
-            break
-        case 'usermanagement/local/role/':
-            role(options)
-            break
-        case 'usermanagement/local/user/':
-            user(options)
-            break
-        // fall back to raw URL mode
-        default:
-            req(options)
+    case 'browsehierarchy/':
+        browsehierarchy(options)
+        break
+    case 'collection/':
+        collection(options)
+        break
+    case 'item/':
+        item(options)
+        break
+    case 'launcher':
+        launcher(options)
+        break
+    case 'search/':
+        search(options)
+        break
+    case 'search2/':
+        search2(options)
+        break
+    case 'settings':
+        settings(options)
+        break
+    case 'taxonomy/':
+        taxonomy(options)
+        break
+    case 'usermanagement/local/group/':
+        group(options)
+        break
+    case 'usermanagement/local/role/':
+        role(options)
+        break
+    case 'usermanagement/local/user/':
+        user(options)
+        break
+    // fall back to raw URL mode
+    default:
+        req(options)
     }
 }

@@ -12,7 +12,7 @@ const err = (e, stderr) => {
 }
 
 // global test taxonomy UUID shared by tests
-let taxoID;
+let taxoID
 
 function createTestTaxo(cb) {
     exec('eq taxo --method post --file test/fixtures/taxonomy.json', (e, stdout, stderr) => {

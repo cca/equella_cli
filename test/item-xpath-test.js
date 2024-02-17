@@ -10,7 +10,7 @@ const err = (e) => {
 }
 
 const doc = new DOMParser().parseFromString(testData.metadata)
-let itemID;
+let itemID
 
 function createTestItem(cb) {
     exec('eq item --method post --file test/fixtures/test-item.json', (e, stdout, stderr) => {

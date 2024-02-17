@@ -56,10 +56,7 @@ export default function (options) {
         // support --term option to look up a term by its path
         // ignore if we're searching, can't do both at once
         if (typeof options.term === 'boolean') {
-            console.error(
-`Error: --term flag requires an argument. If you are not looking up a term by
-its path, then try using --terms or eq tax $UUID/term instead.`
-            )
+            console.error(`Error: --term flag requires an argument. If you are not looking up a term by its path, then try using --terms or eq tax $UUID/term instead.`)
             process.exit(1)
         }
         options[appendOrPath] += '/term'

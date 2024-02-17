@@ -45,11 +45,11 @@ if (options._[0] === 'help' || options.help || options.h || !options._.length) {
         // "event__" is some magic that triggers an internal EQUELLA function
         // see `onclick=_subev('.authenticate')`` attribute of the log in button
         const url = options.root + [
-                'logon.do?_username=',
-                options.username,
-                '&_password=',
-                options.password,
-                '&event__=.authenticate'].join('')
+            'logon.do?_username=',
+            options.username,
+            '&_password=',
+            options.password,
+            '&event__=.authenticate'].join('')
         open(url)
         process.exit(0)
     }
