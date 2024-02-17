@@ -29,12 +29,13 @@
   "dependencies": {
     "@xmldom/xmldom": "^0.8.10",
     "clipboardy": "^4.0.0",
-    "open": "^9.1.0",
+    "open": "^10.0.3",
     "rc": "^1.2.8",
     "request": "^2.88.2",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
+    "eslint": "^8.56.0",
     "mocha": "^10.3.0"
   },
   "engines": {
