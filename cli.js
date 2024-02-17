@@ -13,30 +13,30 @@ options.root = normalize(options.root)
 // these options will only apply on command line
 // so no need to represent elsewhere e.g. in index.js
 
-// help documentation must go first
-if (options._[0] === 'help' || options.help || options.h || !options._.length) {
-    help(options)
-    process.exit(0)
-// API documentation
-} else if (options.apidocs || options.docs || options._[0] === 'apidocs' || options._[0] === 'docs') {
-    const url = options.root + 'apidocs.do'
-    console.log('Opening %s', url)
-    open(url)
-    process.exit(0)
-// admin console
-} else if (options.console || options.admin || options._[0] === 'console' || options._[0] === 'admin') {
-    const url = options.root + 'jnlp/admin.jnlp'
-    console.log('Opening %s', url)
-    open(url)
-    process.exit(0)
-// version number
-} else if (options._[0] === 'version') {
+// version must go first, then help, then other commands
+if (options._[ 0 ] === 'version' || options.version || options.v) {
     const pjpath = new URL('./package.json', import.meta.url)
     const app = JSON.parse(readFileSync(pjpath))
     console.log(app.version)
     process.exit(0)
-// login via browser automatically
-} else if (options.login || options._[0] === 'login') {
+} else if (options._[ 0 ] === 'help' || options.help || options.h || !options._.length) {
+    // help documentation
+    help(options)
+    process.exit(0)
+} else if (options.apidocs || options.docs || options._[ 0 ] === 'apidocs' || options._[ 0 ] === 'docs') {
+    // API documentation
+    const url = options.root + 'apidocs.do'
+    console.log('Opening %s', url)
+    open(url)
+    process.exit(0)
+} else if (options.console || options.admin || options._[ 0 ] === 'console' || options._[ 0 ] === 'admin') {
+    // admin console
+    const url = options.root + 'jnlp/admin.jnlp'
+    console.log('Opening %s', url)
+    open(url)
+    process.exit(0)
+} else if (options.login || options._[ 0 ] === 'login') {
+    // login via browser automatically
     if (!options.username || !options.password) {
         console.error('Error! Login command requires a username & password in .equellarc or passed on the command line.')
         process.exit(1)
@@ -44,13 +44,7 @@ if (options._[0] === 'help' || options.help || options.h || !options._.length) {
         // can pass values to form by referencing their input names in query string
         // "event__" is some magic that triggers an internal EQUELLA function
         // see `onclick=_subev('.authenticate')`` attribute of the log in button
-        const url = options.root + [
-            'logon.do?_username=',
-            options.username,
-            '&_password=',
-            options.password,
-            '&event__=.authenticate'].join('')
-        open(url)
+        open(`${options.root}logon.do?_username=${options.username}&_password=${options.password}&event__=.authenticate`)
         process.exit(0)
     }
 }
