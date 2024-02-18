@@ -14,7 +14,7 @@ const err = (e, stderr) => {
 // global test taxonomy UUID shared by tests
 let taxoID
 
-function createTestTaxo(cb) {
+function createTestTaxo(done) {
     exec('eq taxo --method post --file test/fixtures/taxonomy.json', (e, stdout, stderr) => {
         err(e, stderr)
         // eq returns the taxonomy's API URL upon successful creation, it looks like
@@ -32,7 +32,7 @@ function createTestTaxo(cb) {
                 err(e, stderr)
                 testTerm2.uuid = stdout.split('/term')[1].trim()
                 // console.log(`Created taxonomy term "${testTerm2.term}"`)
-                return cb()
+                return done()
             })
         })
     })
@@ -109,11 +109,11 @@ function testSearchWithName(done) {
     })
 }
 
-function deleteTestTaxo(cb) {
+function deleteTestTaxo(done) {
     exec(`eq taxo --method delete ${taxoID}`, (e, stdout, stderr) => {
         err(e, stderr)
         console.log(`Deleted test taxonomy ${taxoID}`)
-        cb()
+        done()
     })
 }
 
@@ -125,5 +125,5 @@ describe("taxonomy endpoint", function() {
     it("find a taxonomy by its UUID", testFindByUUID)
     it("get the terms in a taxonomy with --terms", testGetTerms)
     it("search a taxonomy for terms", testSearch)
-    it("search a taxonomy for terms using --name", testSearchWithName).timeout(5000)
+    it("search a taxonomy for terms using --name", testSearchWithName)
 })
