@@ -56,7 +56,6 @@ describe("search2 endpoint", () => {
         s2(o, (d) => testSuccessfulSearch(done, d))
     })
 
-    // ! even with huge timeout this test still fails
     it('CSV export works', (done) => {
         let o = { ...opts }
         o.export = true
@@ -66,7 +65,7 @@ describe("search2 endpoint", () => {
             assert.ok(data.toString().match(','), 'data has a comma in it')
             done()
         })
-    }).timeout(5000)
+    })
 
     it('advancedSearch parameter works', (done) => {
         let o = { ...opts }
