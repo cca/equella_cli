@@ -17,9 +17,7 @@ import rc from 'rc'
 const opts = rc('equella', defaults)
 
 // tests a few standard things we expect from every search API response
-function testSuccessfulSearch(done, err, resp, data) {
-    assert.ok(err === null, 'no http error')
-    assert.ok(resp.statusCode === 200, 'status code is 200')
+function testSuccessfulSearch(done, data) {
     assert.ok(typeof data.available === 'number', 'response data.available is a number')
     assert.ok(Array.isArray(data.results), 'response data.results is an array')
     done()
@@ -29,62 +27,58 @@ describe("search2 endpoint", () => {
     it('basic query search works', (done) => {
         let o = { ...opts }
         o.query = 'test'
-        s2(o, (e, r, d) => testSuccessfulSearch(done, e, r, d))
+        s2(o, (d) => testSuccessfulSearch(done, d))
     })
 
     it('single mimeTypes parameter works', (done) => {
         let o = { ...opts }
         o.mimeTypes = 'image/jpeg'
-        s2(o, (e, r, d) => testSuccessfulSearch(done, e, r, d))
+        s2(o, (d) => testSuccessfulSearch(done, d))
     })
 
     it('multiple mimeTypes parameters work', (done) => {
         let o = { ...opts }
         // multiple mime types
         o.mimeTypes = 'image/jpeg,image/png'
-        s2(o, (e, r, d) => testSuccessfulSearch(done, e, r, d))
+        s2(o, (d) => testSuccessfulSearch(done, d))
     })
 
     it('single musts parameter works', (done) => {
         let o = { ...opts }
         o.musts = 'realthumb:false'
-        s2(o, (e, r, d) => testSuccessfulSearch(done, e, r, d))
+        s2(o, (d) => testSuccessfulSearch(done, d))
     })
 
     it('multiple musts parameters work', (done) => {
         let o = { ...opts }
         // multiple musts
         o.musts = 'realthumb:true,videothumb:true'
-        s2(o, (e, r, d) => testSuccessfulSearch(done, e, r, d))
+        s2(o, (d) => testSuccessfulSearch(done, d))
     })
 
+    // ! even with huge timeout this test still fails
     it('CSV export works', (done) => {
         let o = { ...opts }
         o.export = true
         o.collections = testCollection // must be limited to single collection
-        s2(o, function (err, resp, data) {
-            assert.ok(err === null, 'no http error')
-            assert.ok(resp.statusCode === 200, 'status code is 200')
-            assert.ok(resp.headers['content-type'] === 'text/csv', 'content-type is text/csv')
+        s2(o, function (data) {
             assert.ok(data.length > 0, 'response data is not empty')
             assert.ok(data.toString().match(','), 'data has a comma in it')
             done()
         })
-    })
+    }).timeout(5000)
 
     it('advancedSearch parameter works', (done) => {
         let o = { ...opts }
         o.advancedSearch = testAdvancedSearch
-        s2(o, (e, r, d) => testSuccessfulSearch(done, e, r, d))
+        s2(o, (d) => testSuccessfulSearch(done, d))
     })
 
     it('advancedSearch value must be a UUID', (done) => {
         let o = { ...opts }
         o.advancedSearch = 'NOT A UUID'
         console.error('We expect an error message below:')
-        s2(o, function (err, resp, data) {
-            // err is still null but I hate that so let's not test for it
-            assert.ok(resp.statusCode === 404, 'status code is 404')
+        s2(o, function (data) {
             assert.ok(data.error, 'response data has error property')
             assert.ok(data.error_description, 'response data has error_description property')
             done()

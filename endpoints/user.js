@@ -1,5 +1,4 @@
 import {req} from'../lib/req.js'
-import {handle} from'../lib/handle-error.js'
 
 export default function (options) {
     var query = options.name || options.q
@@ -8,9 +7,7 @@ export default function (options) {
     // could refactor findByName to be flexible in this circumstance
     if (query) {
         options.path = '?q=' + query
-        return req(options, function (err, resp, data) {
-            handle(err, data)
-
+        return req(options, function ( data) {
             if (data.results.length === 0) {
                 console.error(`Unable to find "${options.name}" in list of users`)
                 return process.exit(1)

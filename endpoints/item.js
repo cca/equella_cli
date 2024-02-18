@@ -9,7 +9,7 @@ export default function (options) {
     let xp = options.x || options.xp
 
     if (xp) {
-        return req(options, function (err, resp, data) {
+        return req(options, function (data) {
             // --text flag means we want the text, not the XML node
             xp = (options.text ? xp + '/text()' : xp)
             let item = Array.isArray(data) ? data[0] : data

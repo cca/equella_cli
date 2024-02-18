@@ -12,7 +12,7 @@ const err = (e) => {
 const doc = new DOMParser().parseFromString(testData.metadata)
 let itemID
 
-function createTestItem(cb) {
+function createTestItem(done) {
     exec('eq item --method post --file test/fixtures/test-item.json', (e, stdout, stderr) => {
         err(e)
         err(stderr)
@@ -20,7 +20,7 @@ function createTestItem(cb) {
         // {config.root}/api/item/{uuid}/{version}/
         itemID = stdout.split('api/item/')[1]
         console.log(`Created test item ${stdout.trim()}`)
-        cb()
+        done()
     })
 }
 
@@ -44,11 +44,11 @@ function testXpathText(done) {
     })
 }
 
-function deleteTestItem(cb) {
+function deleteTestItem(done) {
     exec(`eq item --method delete ${itemID}`, (e, stdout, stderr) => {
         err(stderr)
         console.log(`Deleted test item ${itemID}`)
-        cb()
+        done()
     })
 }
 
