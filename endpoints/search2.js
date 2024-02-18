@@ -1,3 +1,4 @@
+import { toISO8601 } from '../lib/iso8601.js'
 import { list } from '../lib/list.js'
 import { req } from '../lib/req.js'
 import { handle } from '../lib/handle-error.js'
@@ -138,14 +139,13 @@ Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
     }
 
     // last modified dates
-    // TODO enforce ISO - 8601 dates ?
     let modifiedAfter = options.modifiedAfter || options.ma
     let modifiedBefore = options.modifiedBefore || options.mb
     if (modifiedAfter) {
-        qs.modifiedAfter = encodeURIComponent(modifiedAfter)
+        qs.modifiedAfter = encodeURIComponent(toISO8601(modifiedAfter))
     }
     if (modifiedBefore) {
-        qs.modifiedBefore = encodeURIComponent(modifiedBefore)
+        qs.modifiedBefore = encodeURIComponent(toISO8601(modifiedBefore))
     }
 
     // owner (usually the user who created the item)
