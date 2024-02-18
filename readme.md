@@ -29,7 +29,11 @@ Any option listed in [the endpoints documentation](endpoints.md) can also be giv
 
 Consult the openEQUELLA REST API guide for instructions on generating an OAUTH token. It involves configuring a client, then visiting https://equella.mydomain.edu/oauth/authorize?response_type=token&client_id=$CLIENT_ID&redirect_uri=default
 
-## Commands
+## Usage
+
+### Endpoints
+
+See [the endpoints document](endpoints.md) for documentation on options and shortcuts related to specific API endpoints like taxonomy, groups, search, and items.
 
 ### Miscellaneous
 
@@ -65,14 +69,6 @@ eq tax '1234-4321-asda/term'
 
 The `--path` flag is also available for specifying a path that comes after the API endpoint and any UUID. So `eq tax '1234-4321-asda/term` is equivalent to `eq tax 1234-4321-asda --path term`.
 
-## Endpoints
-
-See [the endpoints document](endpoints.md) for documentation on options and shortcuts related to specific API endpoints like taxonomy, groups, search, and items.
-
-## ESM
-
-Starting with version 2.0.0 `eq` is an ECMAScript module while the 1.x.y versions were CommonJS. This change should not affect `eq` command line usage. In general, importing the module as a library is not an anticipated use case and untested.
-
 ## Use `jq`
 
 `eq` is at its best in combination with a UNIX JSON utility like [jq](https://stedolan.github.io/jq/). By piping API results through `jq`, it's easier to extract the specific information we want as well as to iterate over results. For this reason, `eq` will not focus on tooling for extracting common fields from EQUELLA's JSON responses. Instead, we use `jq` in combination to achieve want we want, e.g.
@@ -84,10 +80,6 @@ eq tax --name 'semesters' --terms | jq '.[].term'
 # then iterate over them printing out all their usernames (FISH loop, not BASH)
 for user in (eq group --name 'system administrators' | jq '.users[]' | tr -d '"'); eq user $user | jq '.username'; end
 ```
-
-## Invalid SSL Certificates
-
-We can work around unrecognized/invalid SSL certificates in Node by setting the `NODE_TLS_REJECT_UNAUTHORIZED` environment variable to `0`, e.g., `export NODE_TLS_REJECT_UNAUTHORIZED=0` in Bash or `set -gx NODE_TLS_REJECT_UNAUTHORIZED 0` in Fish. Node will print runtime warnings to stderr but otherwise this is a good way to work around certificates our system doesn't recognize as valid yet. openEQUELLA forces you to use HTTPS for most (all?) API routes, so otherwise we're stuck.
 
 ## LICENSE
 
