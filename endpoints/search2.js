@@ -71,7 +71,10 @@ export default function (options, cb) {
     // must be less than or equal to 50 so we don't need to validate
     // EQUELLA's error message is clear
     if (len) {
-        if (len > 50) len = 50 && console.error('The "length" parameter was reset to 50, the maximum.')
+        if (len > 50) {
+            len = 50
+            console.error('The "length" parameter was reset to 50, the maximum.')
+        }
         qs.length = len
     }
 
