@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/cca/equella_cli#readme",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --cache",
     "test": "mocha test"
   },
   "author": "phette23 <phette23@gmail.com> (http://phette.net)",
@@ -30,14 +30,15 @@
   "dependencies": {
     "@xmldom/xmldom": "^0.8.10",
     "clipboardy": "^4.0.0",
+    "globals": "^15.3.0",
     "node-fetch": "^3.3.2",
-    "open": "^10.0.3",
+    "open": "^10.1.0",
     "rc": "^1.2.8",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "eslint": "^8.56.0",
-    "mocha": "^10.3.0"
+    "eslint": "^9.3.0",
+    "mocha": "^10.4.0"
   },
   "engines": {
     "node": ">=18"

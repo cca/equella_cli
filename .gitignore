@@ -1,4 +1,5 @@
-.token
+data/
 node_modules/
 .equellarc
-data/
+.eslintcache
+.token
