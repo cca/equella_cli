@@ -9,7 +9,7 @@ const err = (e) => {
     if (e) console.error(e)
 }
 
-const doc = new DOMParser().parseFromString(testData.metadata)
+const doc = new DOMParser().parseFromString(testData.metadata, 'text/xml')
 let itemID
 
 function createTestItem(done) {

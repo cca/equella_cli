@@ -11,11 +11,11 @@ export default function (options) {
     if (xp) {
         return req(options, function (data) {
             // --text flag means we want the text, not the XML node
-            xp = (options.text ? xp + '/text()' : xp)
+            xp = (options.text ? `${xp}/text()` : xp)
             let item = Array.isArray(data) ? data[0] : data
             // EQUELLA item XML, excluding system-generated stuff under /xml/item,
             // is all contained in the "metadata" property
-            let xml = new DOMParser().parseFromString(item.metadata)
+            let xml = new DOMParser().parseFromString(item.metadata, 'text/xml')
             console.log(select(xp, xml).toString())
         })
     } else {

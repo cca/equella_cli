@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@xmldom/xmldom':
-        specifier: ^0.8.10
-        version: 0.8.10
+        specifier: ^0.9.3
+        version: 0.9.3
       clipboardy:
         specifier: ^4.0.0
         version: 4.0.0
@@ -89,9 +89,9 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@xmldom/xmldom@0.8.10':
-    resolution: {integrity: sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==}
-    engines: {node: '>=10.0.0'}
+  '@xmldom/xmldom@0.9.3':
+    resolution: {integrity: sha512-W7fOe0N+t2eyL9sjDE+7bBNo/NZg6U6aU0Rp8wwQV8TRkzLnX13SvROoyJMAH0Kcm9G1DX9b1XI4LxwKxowsXw==}
+    engines: {node: '>=14.6'}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -779,7 +779,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@xmldom/xmldom@0.8.10': {}
+  '@xmldom/xmldom@0.9.3': {}
 
   acorn-jsx@5.3.2(acorn@8.12.1):
     dependencies:

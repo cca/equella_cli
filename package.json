@@ -28,7 +28,7 @@
   ],
   "license": "ECL-2.0",
   "dependencies": {
-    "@xmldom/xmldom": "^0.8.10",
+    "@xmldom/xmldom": "^0.9.3",
     "clipboardy": "^4.0.0",
     "globals": "^15.9.0",
     "node-fetch": "^3.3.2",
