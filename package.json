@@ -1,6 +1,6 @@
 {
   "name": "equella-cli",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "access EQUELLA functions with its REST API",
   "type": "module",
   "bin": {
