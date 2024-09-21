@@ -30,15 +30,15 @@
   "dependencies": {
     "@xmldom/xmldom": "^0.8.10",
     "clipboardy": "^4.0.0",
-    "globals": "^15.3.0",
+    "globals": "^15.9.0",
     "node-fetch": "^3.3.2",
     "open": "^10.1.0",
     "rc": "^1.2.8",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "eslint": "^9.3.0",
-    "mocha": "^10.4.0"
+    "eslint": "^9.11.0",
+    "mocha": "^10.7.3"
   },
   "engines": {
     "node": ">=18"
