@@ -31,7 +31,6 @@
     "@xmldom/xmldom": "^0.9.3",
     "clipboardy": "^4.0.0",
     "globals": "^15.9.0",
-    "node-fetch": "^3.3.2",
     "open": "^10.1.0",
     "rc": "^1.2.8",
     "xpath": "^0.0.34"
