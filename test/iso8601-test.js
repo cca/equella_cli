@@ -13,7 +13,7 @@ describe('ISO 8601 dates', () => {
         done()
     })
     it('Throws an error on an invalid date format', (done) => {
-        console.log('We expect an error message below:')
+        console.error('We expect an error message below:')
         assert.throws(() => toISO8601('bobs bobob'))
         done()
     })
