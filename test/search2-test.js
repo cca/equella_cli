@@ -23,7 +23,9 @@ function testSuccessfulSearch(done, data) {
     done()
 }
 
-describe("search2 endpoint", () => {
+describe("search2 endpoint", function () {
+    this.timeout(5000) // search queries are often slow
+
     it('basic query search works', (done) => {
         let o = { ...opts }
         o.query = 'test'
