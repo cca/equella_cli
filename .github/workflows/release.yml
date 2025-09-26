@@ -37,7 +37,10 @@ jobs:
       # Setup pnpm
       - uses: pnpm/action-setup@v4
         with:
-          version: 9.11.0
+          run_install: true
+          version: latest
+      # ensure latest npm
+      - run: npm install -g npm@latest
       # Need no git checks or this fails with ERR_PNPM_GIT_UNKNOWN_BRANCH
       # because we checked out a tag which is a detached head
       # Using Trusted Publishers, no NPM token https://docs.npmjs.com/trusted-publishers
