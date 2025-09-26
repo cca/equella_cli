@@ -29,7 +29,7 @@
   "license": "ECL-2.0",
   "dependencies": {
     "@xmldom/xmldom": "^0.9.8",
-    "clipboardy": "^4.0.0",
+    "clipboardy": "^5.0.0",
     "open": "^10.2.0",
     "rc": "^1.2.8",
     "xpath": "^0.0.34"
