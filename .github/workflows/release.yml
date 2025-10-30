@@ -32,15 +32,13 @@ jobs:
       # Sets up .npmrc file to publish to npm
       - uses: actions/setup-node@v6
         with:
-          node-version: '20.x'
+          node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
       # Setup pnpm
       - uses: pnpm/action-setup@v4.2.0
         with:
           run_install: true
           version: latest
-      # ensure latest npm
-      - run: npm install -g npm@latest
       # Need no git checks or this fails with ERR_PNPM_GIT_UNKNOWN_BRANCH
       # because we checked out a tag which is a detached head
       # Using Trusted Publishers, no NPM token https://docs.npmjs.com/trusted-publishers
