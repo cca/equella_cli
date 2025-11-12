@@ -4,7 +4,8 @@
 
 Command line interface to the openEQUELLA REST APIs.
 
-**WARNING** use at your own risk. In particular, `PUT` and `POST` requests do not lock the resources they're editing. Safe for `GET`ting information, though.
+> [!CAUTION]
+> Use at your own risk. In particular, `PUT` and `POST` requests do not lock the resources they're editing.
 
 ## Setup
 
