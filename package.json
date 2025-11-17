@@ -30,7 +30,7 @@
   "dependencies": {
     "@xmldom/xmldom": "^0.9.8",
     "clipboardy": "^5.0.0",
-    "open": "^10.2.0",
+    "open": "^11.0.0",
     "rc": "^1.2.8",
     "xpath": "^0.0.34"
   },
