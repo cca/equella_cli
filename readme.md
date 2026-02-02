@@ -77,9 +77,10 @@ The `--path` flag is also available for specifying a path that comes after the A
 ```sh
 # get the text of all top-level terms in a taxonomy
 eq tax --name 'semesters' --terms | jq '.[].term'
-# retrieve all the members of a group by its name
-# then iterate over them printing out all their usernames (FISH loop, not BASH)
-for user in (eq group --name 'system administrators' | jq '.users[]' | tr -d '"'); eq user $user | jq '.username'; end
+# print the usernames of all users in a group (only works for internal users)
+for user in $(eq group --name 'system administrators' | jq '.users[]' | tr -d '"'); do
+    eq user $user | jq '.username'
+done
 ```
 
 ## LICENSE
