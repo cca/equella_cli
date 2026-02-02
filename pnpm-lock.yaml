@@ -13,7 +13,7 @@ importers:
         version: 0.9.8
       clipboardy:
         specifier: ^5.0.2
-        version: 5.0.2
+        version: 5.1.0
       open:
         specifier: ^11.0.0
         version: 11.0.0
@@ -182,8 +182,8 @@ packages:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
 
-  clipboardy@5.0.2:
-    resolution: {integrity: sha512-3IG8i8Yfb410yqDlCx9Ve3lYLFN3bD1IkrWcowT1kyTo6y4bwYf2guK9Q8a6zck5vWm7afm6Y61i7BG/Ir3FMA==}
+  clipboardy@5.1.0:
+    resolution: {integrity: sha512-w8Faf7egtk+6eZ+QJSYhCc8W5GKKd36Et6Qtl+c/dOFtPSjgCkJn9+QHr7D3EbdAO6rJb8I76sizRQAJpwOoLg==}
     engines: {node: '>=20'}
 
   cliui@8.0.1:
@@ -571,6 +571,10 @@ packages:
     resolution: {integrity: sha512-dM0jVuXJPsDN6DvRpea484tCUaMiXWjuCn++HGTqUWzGDjv5tZkEZldAJ/UMlqRYGFrD/etByo4/xOuC/snX2A==}
     engines: {node: '>=20'}
 
+  powershell-utils@0.2.0:
+    resolution: {integrity: sha512-ZlsFlG7MtSFCoc5xreOvBAozCJ6Pf06opgJjh9ONEv418xpZSAzNjstD36C6+JwOnfSqOW/9uDkqKjezTdxZhw==}
+    engines: {node: '>=20'}
+
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -863,12 +867,13 @@ snapshots:
     dependencies:
       readdirp: 4.1.2
 
-  clipboardy@5.0.2:
+  clipboardy@5.1.0:
     dependencies:
       execa: 9.6.1
       is-wayland: 0.1.0
       is-wsl: 3.1.0
       is64bit: 2.0.0
+      powershell-utils: 0.2.0
 
   cliui@8.0.1:
     dependencies:
@@ -1249,6 +1254,8 @@ snapshots:
   picocolors@1.1.1: {}
 
   powershell-utils@0.1.0: {}
+
+  powershell-utils@0.2.0: {}
 
   prelude-ls@1.2.1: {}
 
