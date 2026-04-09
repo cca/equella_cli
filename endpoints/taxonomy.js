@@ -28,7 +28,7 @@ route to a single object i.e. {root}/taxonomy/{UUID}/{path} while append is only
 used if we first look up an object by its name, then after we find it append
 becomes the path.
 */
-export default function (options) {
+export default function (options, callback) {
     let search = (options.search || options.s || options.serach)
     options.append = options.append || ''
     if (options.method == 'get') options.path = options.path || ''
@@ -69,5 +69,5 @@ export default function (options) {
     if (options.qs) options[appendOrPath] += `?${options.qs.toString()}`
 
     if (options.name) return findByName(options)
-    return req(options)
+    return req(options, callback)
 }
