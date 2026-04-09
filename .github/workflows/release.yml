@@ -20,8 +20,10 @@ jobs:
           node-version: 24
           cache: 'pnpm'
       - run: pnpm install
-      # Ensure `eq` is on PATH, some tests shell out to it
+      # Ensure `eq` is on PATH with a fake .equellarc, some tests shell out to it
       - run: pnpm link
+      - run: |
+          echo '{"root": "http://localhost", "token": "fake"}' > .equellarc
       - run: pnpm test
 
   github-release:
