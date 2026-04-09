@@ -1,0 +1,13 @@
+{
+  "available": 1,
+  "results": [
+    {
+      "uuid": "e1722640-f782-4a53-b20d-cda384f1aa22",
+      "version": "1",
+      "name": "EQUELLA CLI Test Item",
+      "links": {
+        "self": "/api/item/e1722640-f782-4a53-b20d-cda384f1aa22/1/"
+      }
+    }
+  ]
+}
