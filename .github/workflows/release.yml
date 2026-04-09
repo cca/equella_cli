@@ -6,7 +6,24 @@ on:
             - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
+  test:
+    name: Run Tests 🧪
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+        with:
+          run_install: false
+          version: latest
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'pnpm'
+      - run: pnpm ci
+      - run: pnpm test
+
   github-release:
+    needs: test
     name: Create GitHub Release 🚀
     runs-on: ubuntu-latest
     permissions:
@@ -22,6 +39,7 @@ jobs:
           --generate-notes
 
   npm-publish:
+    needs: test
     name: Publish to NPM 📦
     permissions:
       contents: read
@@ -32,7 +50,7 @@ jobs:
       # Sets up .npmrc file to publish to npm
       - uses: actions/setup-node@v6
         with:
-          node-version: '24.x'
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
       # Setup pnpm
       - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
