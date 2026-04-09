@@ -1,0 +1,20 @@
+[
+  {
+    "uuid": "test-term-2-uuid",
+    "term": "Second Thing (with data)",
+    "fullTerm": "Second Thing (with data)",
+    "data": {
+      "data key": "data value",
+      "another": "one"
+    },
+    "index": 0,
+    "readOnly": false
+  },
+  {
+    "uuid": "test-term-1-uuid",
+    "term": "First Thing",
+    "fullTerm": "First Thing",
+    "index": 0,
+    "readOnly": false
+  }
+]

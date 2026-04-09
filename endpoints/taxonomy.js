@@ -57,7 +57,7 @@ export default function (options, callback) {
         // ignore if we're searching, can't do both at once
         if (typeof options.term === 'boolean') {
             console.error(`Error: --term flag requires an argument. If you are not looking up a term by its path, then try using --terms or eq tax $UUID/term instead.`)
-            process.exit(1)
+            process.exit(1) // TODO work with callback for testing
         }
         options[appendOrPath] += '/term'
         options.qs = new URLSearchParams({ 'path': options.term })
