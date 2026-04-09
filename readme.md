@@ -83,6 +83,16 @@ for user in $(eq group --name 'system administrators' | jq '.users[]' | tr -d '"
 done
 ```
 
+## Publish a release
+
+```sh
+# major | minor | patch are subcommands of version
+npm version minor -m "%s: short description"
+# this automatically increments the appropriate version number in package.json
+git push && git push --tags
+# the tag triggers a GitHub action that creates a GH release & publishes to npm
+```
+
 ## LICENSE
 
 [ECL Version 2.0](https://opensource.org/licenses/ECL-2.0)
