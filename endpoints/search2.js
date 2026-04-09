@@ -90,12 +90,13 @@ export default function (options, cb) {
         if (Object.hasOwn(ORDER_OPTIONS, orderString)) {
             qs.order = ORDER_OPTIONS[orderString]
         } else {
-            // see handle-error fn for why syntax is like this
-            return handle(null, {
+            const errorResponse = {
                 'error': true,
                 'error_description': `Unrecognized "order" value: ${orderString}
 Please choose one of: ${list(Object.keys(ORDER_OPTIONS), 'or')}.`
-            })
+            }
+            if (cb) return cb(errorResponse)
+            return handle(null, errorResponse)
         }
     }
 
@@ -116,12 +117,14 @@ Please choose one of: ${list(Object.keys(ORDER_OPTIONS), 'or')}.`
         if (infos.every(term => Object.hasOwn(INFO_OPTIONS, term))) {
             qs.info = infos.map(term => INFO_OPTIONS[term]).join(',')
         } else {
-            // see handle-error fn for why syntax is like this
-            return handle(null, {
+            const errorResponse = {
                 'error': true,
                 'error_description': `Unrecognized "info" value: ${infoString}
 Please choose from: ${list(Object.keys(INFO_OPTIONS), 'and/or')}.`
-            })
+            }
+            console.error(errorResponse)
+            if (cb) return cb(errorResponse)
+            return handle(null, errorResponse)
         }
     }
 
@@ -132,12 +135,13 @@ Please choose from: ${list(Object.keys(INFO_OPTIONS), 'and/or')}.`
         if (statuses.every(status => Object.hasOwn(STATUS_OPTIONS, status))) {
             qs.status = statuses.map(status => STATUS_OPTIONS[status]).join(',')
         } else {
-            // see handle-error fn for why syntax is like this
-            return handle(null, {
+            const errorResponse = {
                 'error': true,
                 'error_description': `Unrecognized "status" value: ${statusString}
 Please choose from: ${list(Object.keys(STATUS_OPTIONS), 'and/or')}.`
-            })
+            }
+            if (cb) return cb(errorResponse)
+            return handle(null, errorResponse)
         }
     }
 
