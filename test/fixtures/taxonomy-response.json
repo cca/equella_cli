@@ -1,0 +1,20 @@
+{
+    "uuid": "test-taxo-uuid-12345",
+    "name": "TEST taxo for eq",
+    "nameStrings": {
+        "en": "TEST taxo for eq"
+    },
+    "modifiedDate": "2015-09-22T11:17:02.708-07:00",
+    "createdDate": "2012-10-03T09:30:58.869-07:00",
+    "owner": {
+        "id": "cfbe6c26-cf49-c679-bd90-ebdbe22d84f1"
+    },
+    "security": {
+        "rules": []
+    },
+    "readonly": false,
+    "dataSource": "internal",
+    "links": {
+        "self": "/api/taxonomy/test-taxo-uuid-12345"
+    }
+}

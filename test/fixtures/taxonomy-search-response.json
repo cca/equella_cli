@@ -1,0 +1,19 @@
+{
+  "available": 1,
+  "length": 1,
+  "start": 0,
+  "results": [
+    {
+        "uuid": "test-taxo-uuid-12345",
+        "name": "TEST taxo for eq",
+        "nameStrings": {
+            "en": "TEST taxo for eq"
+        },
+        "readonly": false,
+        "dataSource": "internal",
+        "links": {
+            "self": "https://vault.cca.edu/api/taxonomy/test-taxo-uuid-12345"
+        }
+    }
+  ]
+}
