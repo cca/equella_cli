@@ -1,10 +1,10 @@
 import { req } from '../lib/req.js'
 import { findByName } from '../lib/find-by-name.js'
 
-export default function (options) {
+export default function (options, callback) {
     if (options.name) {
         return findByName(options)
     } else {
-        return req(options)
+        return req(options, callback)
     }
 }

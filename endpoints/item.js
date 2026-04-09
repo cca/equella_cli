@@ -4,7 +4,7 @@ import { select } from 'xpath'
 import { DOMParser } from '@xmldom/xmldom'
 // TODO more to implement in item endpoint, see: apidocs.do#!/item
 
-export default function (options) {
+export default function (options, callback) {
     // xpath expression, if present
     let xp = options.x || options.xp
 
@@ -16,9 +16,14 @@ export default function (options) {
             // EQUELLA item XML, excluding system-generated stuff under /xml/item,
             // is all contained in the "metadata" property
             let xml = new DOMParser().parseFromString(item.metadata, 'text/xml')
-            console.log(select(xp, xml).toString())
+            const result = select(xp, xml).toString()
+            if (callback) {
+                return callback(result)
+            } else {
+                return console.log(result)
+            }
         })
     } else {
-        return req(options)
+        return req(options, callback)
     }
 }
