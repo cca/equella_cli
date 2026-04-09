@@ -21,4 +21,6 @@ jobs:
           node-version: 24
           cache: 'pnpm'
       - run: pnpm install
+      # Ensure `eq` is on PATH, some tests shell out to it
+      - run: pnpm link
       - run: pnpm test
