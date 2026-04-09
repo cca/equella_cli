@@ -17,7 +17,7 @@
   "homepage": "https://github.com/cca/equella_cli#readme",
   "scripts": {
     "lint": "eslint . --cache",
-    "test": "mocha test"
+    "test": "mocha"
   },
   "author": "phette23 <phette23@gmail.com> (http://phette.net)",
   "keywords": [
