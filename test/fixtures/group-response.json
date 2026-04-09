@@ -1,0 +1,12 @@
+{
+  "id": "8a196939-f499-43e9-9059-ba28d7e9d003",
+  "name": "TEST GROUP FOR EQ",
+  "users": [
+    "stest1",
+    "ftest",
+    "stest"
+  ],
+  "links": {
+    "self": "https://vault.cca.edu/api/usermanagement/local/group/8a196939-f499-43e9-9059-ba28d7e9d003"
+  }
+}
