@@ -104,12 +104,13 @@ function deleteTestItem(done) {
 describe("item xpaths", () => {
     if (isE2E) {
         before(useE2EMode)
+        this.timeout(5000) // E2E operations can be slow
     } else {
         before(useMockMode)
     }
 
     before(createTestItem)
     after(deleteTestItem)
-    it("retrieve XML element from XPath", testXpath).timeout(5000)
-    it("retrieve text of element from XPath", testXpathText).timeout(5000)
+    it("retrieve XML element from XPath", testXpath)
+    it("retrieve text of element from XPath", testXpathText)
 })

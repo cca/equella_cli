@@ -26,6 +26,7 @@ if (!isE2E) {
 describe("eq group", () => {
     if (isE2E) {
         before(useE2EMode)
+        this.timeout(5000) // group modifications can be slow in E2E
     } else {
         before(useMockMode)
     }
@@ -53,7 +54,7 @@ describe("eq group", () => {
                 done()
             })
         }
-    }).timeout(5000)
+    })
 
     it('should modify group with a PUT request & retrieve it with --name flag', (done) => {
         if (isE2E) {
@@ -92,7 +93,7 @@ describe("eq group", () => {
                 })
             })
         }
-    }).timeout(5000)
+    })
 
     it('should work with a PUT using --file flag', (done) => {
         if (isE2E) {
@@ -112,5 +113,5 @@ describe("eq group", () => {
                 done()
             })
         }
-    }).timeout(5000)
+    })
 })
