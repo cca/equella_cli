@@ -88,15 +88,26 @@ export function useMockMode() {
         let key = `${method} ${path}`
         let mockData = mockRegistry[key]
 
-        // Try without query string
-        if (!mockData && urlObj.search) {
+        if (mockData) {
+            if (process.env.DEBUG) {
+                console.error(`Mock found for ${key}`)
+            }
+        } else if (urlObj.search) {
+            // Try without query string
             key = `${method} ${urlObj.pathname}`
             mockData = mockRegistry[key]
+            if (mockData) {
+                if (process.env.DEBUG) {
+                    console.error(`Mock fallback found for ${key} (no query string)`)
+                }
+            }
         }
 
         if (!mockData) {
             const available = Object.keys(mockRegistry).join('\n  ')
-            const err = new Error(`No mock registered for ${method} ${path}\nAvailable mocks:\n  ${available}`)
+            const err = new Error(
+                `No mock registered for ${method} ${path}\nAvailable mocks:\n  ${available}`
+            )
             globalThis.console.error = originalError
             throw err
         }
