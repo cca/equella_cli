@@ -114,20 +114,11 @@ export function useMockMode() {
             responseBody = ''
         }
 
-        // For location header (POST/PUT), set it appropriately
-        let finalHeaders = { 'content-type': 'application/json', ...respHeaders }
-        if (status === 201 || status === 200) {
-            if (!finalHeaders.location && (method === 'POST' || method === 'PUT')) {
-                // Generate a location URL based on the request
-                finalHeaders.location = url
-            }
-        }
-
         // Build response object similar to real fetch Response
         const response_obj = new Response(responseBody, {
             status,
-            headers: new Headers(finalHeaders),
-            url
+            headers: new Headers(respHeaders),
+            url,
         })
 
         return Promise.resolve(response_obj)
