@@ -32,10 +32,9 @@ function testSuccessfulSearch(done, data) {
 }
 
 describe("search2 endpoint", function () {
-    this.timeout(5000) // search queries are often slow
-
     if (isE2E) {
         before(useE2EMode)
+        this.timeout(5000) // search queries are often slow
     } else {
         before(() => {
             useMockMode()
