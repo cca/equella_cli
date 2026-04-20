@@ -3,7 +3,10 @@ import { exec } from 'node:child_process'
 
 const handleErr = (e) => { if (e) console.error(e) }
 
-describe("eq help", () => {
+describe("eq help", function () {
+    // These tests shell out to a new Node process, so they're naturally slower
+    this.slow(2000)
+
     it("argument usage like `eq help $ENDPOINT` works", (done) => {
         exec('eq help taxo', (err, stdout, stderr) => {
             handleErr(stderr)
