@@ -28,7 +28,7 @@
   ],
   "license": "ECL-2.0",
   "dependencies": {
-    "@xmldom/xmldom": "^0.9.8",
+    "@xmldom/xmldom": "^0.9.9",
     "clipboardy": "^5.3.1",
     "open": "^11.0.0",
     "rc": "^1.2.8",
@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "eslint": "^10.0.3",
-    "globals": "^17.4.0",
+    "eslint": "^10.2.0",
+    "globals": "^17.5.0",
     "mocha": "^11.7.5"
   },
   "engines": {
