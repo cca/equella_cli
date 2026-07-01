@@ -33,7 +33,7 @@ jobs:
       id-token: write # for OIDC
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       # Sets up .npmrc file to publish to npm
       - uses: actions/setup-node@v6.4.0
         with:
