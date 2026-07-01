@@ -7,26 +7,7 @@ on:
 
 jobs:
   test:
-    name: Run Tests 🧪
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
-        with:
-          run_install: false
-          version: latest
-      - uses: actions/setup-node@v6.4.0
-        with:
-          node-version: 24
-          cache: 'pnpm'
-      - run: pnpm install
-      # Ensure `eq` is on PATH with a fake .equellarc, some tests shell out to it
-      - run: pnpm link
-      - run: |
-          echo '{"root": "http://localhost", "token": "fake"}' > .equellarc
-      - run: pnpm test
+    uses: ./.github/workflows/test.yml
 
   github-release:
     needs: test
