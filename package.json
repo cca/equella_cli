@@ -29,16 +29,16 @@
   "license": "ECL-2.0",
   "dependencies": {
     "@xmldom/xmldom": "^0.9.10",
-    "clipboardy": "^5.3.1",
+    "clipboardy": "^5.3.2",
     "open": "^11.0.0",
     "rc": "^1.2.8",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "eslint": "^10.7.0",
-    "globals": "^17.7.0",
-    "mocha": "^11.7.6"
+    "eslint": "^10.8.0",
+    "globals": "^17.9.0",
+    "mocha": "^11.8.0"
   },
   "engines": {
     "node": ">=20"
